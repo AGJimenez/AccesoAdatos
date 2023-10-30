@@ -88,16 +88,11 @@ public class Interfaz extends JFrame {
 		            String selectedValue = options[choice].toString();
 		            System.out.println("Valor seleccionado: " + selectedValue);
 
-		            try {
-		                Consultas consultas = new Consultas();
-		                consultas.conectar();
-		                List<String[]> datos = consultas.obtenerDatosDeTabla(selectedValue);
-		                Jd_verDatos dialog = new Jd_verDatos();
-		                dialog.setDatos(datos);
-		                dialog.setVisible(true);
-		            } catch (SQLException ex) {
-		                ex.printStackTrace();
-		            }
+		            Consultas consultas = new Consultas();
+					consultas.conectar();
+           
+					Jd_verDatos dialog = new Jd_verDatos();
+					dialog.setVisible(true);
 		        }
 
 				//MOSTRAR DATOS

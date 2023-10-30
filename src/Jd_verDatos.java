@@ -1,18 +1,12 @@
 import java.awt.EventQueue;
-
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
 import java.awt.Color;
-import java.sql.SQLException;
-import java.util.List;
+import java.awt.Dimension;
+import javax.swing.table.DefaultTableModel;
 
-public class Jd_verDatos extends JDialog implements TablaDatos {
+public class Jd_verDatos extends JDialog {
     private static final long serialVersionUID = 1L;
     private JTable table;
-    private JScrollPane scrollPane;
-    private DefaultTableModel model;
-
-    Consultas consulta;
 
     /**
      * Launch the application.
@@ -37,27 +31,12 @@ public class Jd_verDatos extends JDialog implements TablaDatos {
         setBounds(100, 100, 800, 400);
         getContentPane().setLayout(null);
 
-        consulta = new Consultas();
-        consulta.conectar();
+        Consultas consultas = new Consultas();
+        DefaultTableModel model = consultas.obtenerDatosTabla();
 
-        table = new JTable();
-        scrollPane = new JScrollPane(table);
-        scrollPane.setBounds(10, 11, 764, 339);
-        getContentPane().add(scrollPane);
-
-    }
-
-    @Override
-    public void setDatos(List<String[]> datos) {
-        model = new DefaultTableModel();
-        for (String[] fila : datos) {
-            model.addRow(fila);
-        }
-        table.setModel(model);
-    }
-
-    @Override
-    public List<String[]> getDatos() {
-        return null; // Puedes implementar esto según tus necesidades
+        // Crear la tabla usando el modelo
+        table = new JTable(model);
+        table.setBounds(20, 11, 754, 339);
+        getContentPane().add(table);
     }
 }

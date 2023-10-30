@@ -8,6 +8,9 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
 public class Consultas {
 	 private static final String CONTROLADOR = "com.mysql.jdbc.Driver";
 		private static final String URL = "jdbc:mysql://localhost:3306/accesoadatos";
@@ -17,7 +20,7 @@ public class Consultas {
 		ResultSet resultado ;
 		Connection conect  ;
 		private Statement statement;
-
+		private JTable table;
 
 		
 
@@ -94,29 +97,45 @@ public class Consultas {
 		        }
 		    }
 		 
-		    public List<String[]> obtenerDatosDeTabla(String nombreTabla) throws SQLException {
-		        List<String[]> datos = new ArrayList<>();
-		        try {
-		            Statement statement = conect.createStatement();
-		            ResultSet resultSet = statement.executeQuery("SELECT * FROM " + nombreTabla);
+		  
+		    public DefaultTableModel obtenerDatosTabla() {
+		        DefaultTableModel model = new DefaultTableModel();
 
-		            ResultSetMetaData metaData = resultSet.getMetaData();
+		        // Conexión a la base de datos
+		        try {
+		          this.conectar();
+		             statement = conect.createStatement();
+		             resultado  = statement.executeQuery("SELECT * FROM pacientes");
+
+		            // Obtener los metadatos de la consulta
+		            ResultSetMetaData metaData = resultado.getMetaData();
 		            int columnCount = metaData.getColumnCount();
 
-		            while (resultSet.next()) {
-		                String[] fila = new String[columnCount];
-		                for (int i = 0; i < columnCount; i++) {
-		                    fila[i] = resultSet.getString(i + 1);
-		                }
-		                datos.add(fila);
+		            // Agregar columnas al modelo en función de los metadatos
+		            for (int i = 1; i <= columnCount; i++) {
+		                model.addColumn(metaData.getColumnName(i));
 		            }
+
+		            // Agregar filas al modelo
+		            while (resultado.next()) {
+		                Object[] row = new Object[columnCount];
+		                for (int i = 1; i <= columnCount; i++) {
+		                    row[i - 1] = resultado.getObject(i);
+		                }
+		                model.addRow(row);
+		            }
+
+		            // Cerrar la conexión
+		            conect.close();
 		        } catch (SQLException e) {
 		            e.printStackTrace();
-		            System.err.println("Error al obtener los datos de la tabla " + nombreTabla);
 		        }
-		        return datos;
+
+		        return model;
 		    }
 		
 		
+		
 }
+
 
