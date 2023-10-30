@@ -196,8 +196,7 @@ public class Jd_verDatos extends JDialog {
 				// Lógica para generar dinámicamente los campos en función de la tabla seleccionada
 				 if (tablaSeleccionada.equals("usuario")) {
 					 
-					 String[] valores = {txt1.getText(), txt2.getText(), txt3.getText()};
-					    consulta.insertDataIntoTable(tablaSeleccionada,valores);
+					mostrarUsuario(lb1, lb2, lb3, lb4, lb5, lb6, lb7, lb8, lb9, lb10, lb11);
 					 	
 					 
 			        } else if (tablaSeleccionada.equals("tratamientos")) {

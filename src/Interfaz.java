@@ -59,9 +59,9 @@ public class Interfaz extends JFrame {
 		JButton btnNewButton = new JButton("Insertar datos");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Jd_verDatos mostrar = new Jd_verDatos();
+				Jd_insertarDatos mostrar = new Jd_insertarDatos();
 				try {
-                    conectar.verTablas(mostrar); // Llama al método verTablas y pasa la instancia de Jd_verDatos
+                    conectar.insertarTablasMostrar(mostrar); // Llama al método verTablas y pasa la instancia de Jd_verDatos
                 } catch (SQLException throwables) {
                     throwables.printStackTrace();
                 }

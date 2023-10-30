@@ -13,7 +13,7 @@ import java.awt.Font;
 import javax.swing.JButton;
 
 public class Jd_insertarDatos extends JDialog {
-	Consultas consulta;
+	
 	JComboBox cb_tablas = new JComboBox();
 	private static final long serialVersionUID = 1L;
 	private JTextField txt1;
@@ -197,8 +197,7 @@ public class Jd_insertarDatos extends JDialog {
 				// Lógica para generar dinámicamente los campos en función de la tabla seleccionada
 				 if (tablaSeleccionada.equals("usuario")) {
 					 
-					 String[] valores = {txt1.getText(), txt2.getText(), txt3.getText()};
-					    consulta.insertDataIntoTable(tablaSeleccionada,valores);
+					 mostrarUsuario(lb1, lb2, lb3, lb4, lb5, lb6, lb7, lb8, lb9, lb10, lb11);
 					 	
 					 
 			        } else if (tablaSeleccionada.equals("tratamientos")) {
@@ -212,21 +211,22 @@ public class Jd_insertarDatos extends JDialog {
 			        	mostrarProveedor(lb1, lb2, lb3, lb4, lb5, lb6, lb7, lb8, lb9, lb10, lb11);
 			           
 			        } else if (tablaSeleccionada.equals("pedidos")) {
-			          
+			          mostrarPedidos(lb1, lb2, lb3, lb4, lb5, lb6, lb7, lb8, lb9, lb10, lb11);
+			        	
 			        } else if (tablaSeleccionada.equals("pacientes")) {
-			           
+			        	mostrarPacientes(lb1, lb2, lb3, lb4, lb5, lb6, lb7, lb8, lb9, lb10, lb11);
 			        } else if (tablaSeleccionada.equals("inventario")) {
-			           
+			        	mostrarInventario(lb1, lb2, lb3, lb4, lb5, lb6, lb7, lb8, lb9, lb10, lb11);
 			        } else if (tablaSeleccionada.equals("historial_pago")) {
-			           
+			        	mostrarHistorialPago(lb1, lb2, lb3, lb4, lb5, lb6, lb7, lb8, lb9, lb10, lb11);
 			        } else if (tablaSeleccionada.equals("facturacion")) {
-			           
+			        	mostrarFacturacion(lb1, lb2, lb3, lb4, lb5, lb6, lb7, lb8, lb9, lb10, lb11);
 			        } else if (tablaSeleccionada.equals("especialidades")) {
-			           
+			        	mostrarEspecialidades(lb1, lb2, lb3, lb4, lb5, lb6, lb7, lb8, lb9, lb10, lb11);
 			        } else if (tablaSeleccionada.equals("doctores")) {
-			           
+			        	mostrarDoctores(lb1, lb2, lb3, lb4, lb5, lb6, lb7, lb8, lb9, lb10, lb11);
 			        } else if (tablaSeleccionada.equals("citas")) {
-			            
+			        	mostrarCitas(lb1, lb2, lb3, lb4, lb5, lb6, lb7, lb8, lb9, lb10, lb11);
 			        }
 				panelContenedor.revalidate();
 				
@@ -234,11 +234,17 @@ public class Jd_insertarDatos extends JDialog {
 
 			public void mostrarSolicitudes(JLabel lb1, JLabel lb2, JLabel lb3, JLabel lb4, JLabel lb5, JLabel lb6,
 					JLabel lb7, JLabel lb8, JLabel lb9, JLabel lb10, JLabel lb11) {
+				lb1.setVisible(true);
 				lb1.setText("ID_producto");
+				txt1.setVisible(true);
 				 txt1.setText("");
+				 lb2.setVisible(true);
 				 lb2.setText("DNI_doctor");
+				 txt2.setVisible(true);
 				 txt2.setText("");
+				 lb3.setVisible(true);
 				 lb3.setText("Cantidad");
+				 txt3.setVisible(true);
 				 txt3.setText("");
 				 				 
 				 lb4.setVisible(false);
@@ -259,13 +265,123 @@ public class Jd_insertarDatos extends JDialog {
 				 txt11.setVisible(false);
 			}
 
+			
+			public void mostrarPedidos(JLabel lb1, JLabel lb2, JLabel lb3, JLabel lb4, JLabel lb5, JLabel lb6,
+					JLabel lb7, JLabel lb8, JLabel lb9, JLabel lb10, JLabel lb11) {
+				lb1.setVisible(true);
+				lb1.setText("ID_Pedido");
+				txt1.setVisible(true);
+				 txt1.setText("");
+				 lb2.setVisible(true);
+				 lb2.setText("Producto");
+				 txt2.setVisible(true);
+				 txt2.setText("");
+				 lb3.setVisible(true);
+				 lb3.setText("Cantidad");
+				 txt3.setVisible(true);
+				 txt3.setText("");			
+				 lb4.setVisible(true);
+				 lb4.setText("Precio");
+				 txt4.setVisible(true);
+				 txt4.setText("");
+				 lb5.setVisible(false);
+				 txt5.setVisible(false);
+				 lb6.setVisible(false);
+				 txt6.setVisible(false);
+				 lb7.setVisible(false);
+				 txt7.setVisible(false);
+				 lb8.setVisible(false);
+				 txt8.setVisible(false);
+				 lb9.setVisible(false);
+				 txt9.setVisible(false);
+				 lb10.setVisible(false);
+				 txt10.setVisible(false);
+				 lb11.setVisible(false);
+				 txt11.setVisible(false);
+			}
+
+			
+			public void mostrarHistorialPago(JLabel lb1, JLabel lb2, JLabel lb3, JLabel lb4, JLabel lb5, JLabel lb6,
+					JLabel lb7, JLabel lb8, JLabel lb9, JLabel lb10, JLabel lb11) {
+				lb1.setVisible(true);
+				lb1.setText("DNI paciente");
+				txt1.setVisible(true);
+				 txt1.setText("");
+				 lb2.setVisible(true);
+				 lb2.setText("Cantidad");
+				 txt2.setVisible(true);
+				 txt2.setText("");
+				 lb3.setVisible(true);
+				 lb3.setText("Fecha");
+				 txt3.setVisible(true);
+				 txt3.setText("");			
+				 lb4.setVisible(true);
+				 lb4.setText("Tipo");
+				 txt4.setVisible(true);
+				 txt4.setText("");
+				 lb5.setVisible(false);
+				 txt5.setVisible(false);
+				 lb6.setVisible(false);
+				 txt6.setVisible(false);
+				 lb7.setVisible(false);
+				 txt7.setVisible(false);
+				 lb8.setVisible(false);
+				 txt8.setVisible(false);
+				 lb9.setVisible(false);
+				 txt9.setVisible(false);
+				 lb10.setVisible(false);
+				 txt10.setVisible(false);
+				 lb11.setVisible(false);
+				 txt11.setVisible(false);
+			}
+			
+			public void mostrarCitas(JLabel lb1, JLabel lb2, JLabel lb3, JLabel lb4, JLabel lb5, JLabel lb6,
+					JLabel lb7, JLabel lb8, JLabel lb9, JLabel lb10, JLabel lb11) {
+				lb1.setVisible(true);
+				lb1.setText("DNI paciente");
+				txt1.setVisible(true);
+				 txt1.setText("");
+				 lb2.setVisible(true);
+				 lb2.setText("DNI doctor");
+				 txt2.setVisible(true);
+				 txt2.setText("");
+				 lb3.setVisible(true);
+				 lb3.setText("Fecha");
+				 txt3.setVisible(true);
+				 txt3.setText("");			
+				 lb4.setVisible(true);
+				 lb4.setText("Especialidad");
+				 txt4.setVisible(true);
+				 txt4.setText("");
+				 lb5.setVisible(false);
+				 txt5.setVisible(false);
+				 lb6.setVisible(false);
+				 txt6.setVisible(false);
+				 lb7.setVisible(false);
+				 txt7.setVisible(false);
+				 lb8.setVisible(false);
+				 txt8.setVisible(false);
+				 lb9.setVisible(false);
+				 txt9.setVisible(false);
+				 lb10.setVisible(false);
+				 txt10.setVisible(false);
+				 lb11.setVisible(false);
+				 txt11.setVisible(false);
+			}
+			
 			public void mostrarTratamiento(JLabel lb1, JLabel lb2, JLabel lb3, JLabel lb4, JLabel lb5, JLabel lb6,
 					JLabel lb7, JLabel lb8, JLabel lb9, JLabel lb10, JLabel lb11) {
+				lb1.setVisible(true);
 				lb1.setText("ID_tratamiento");
+				txt1.setVisible(true);
 				 txt1.setText("");
+				 lb2.setVisible(true);
 				 lb2.setText("DNI_paciente");
+				 txt2.setVisible(true);
 				 txt2.setText("");
-				 lb3.setText("Dcotor");
+				 lb3.setVisible(true);
+				 lb3.setText("Doctor");
+				 txt3.setVisible(true);
 				 txt3.setText("");			
 				 lb4.setVisible(true);
 				 lb4.setText("A pagar");
@@ -286,14 +402,163 @@ public class Jd_insertarDatos extends JDialog {
 				 lb11.setVisible(false);
 				 txt11.setVisible(false);
 			}
+			
+			public void mostrarPacientes(JLabel lb1, JLabel lb2, JLabel lb3, JLabel lb4, JLabel lb5, JLabel lb6,
+					JLabel lb7, JLabel lb8, JLabel lb9, JLabel lb10, JLabel lb11) {
+				lb1.setVisible(true);
+				lb1.setText("DNI");
+				txt1.setVisible(true);
+				 txt1.setText("");
+				 lb2.setVisible(true);
+				 lb2.setText("Nombre");
+				 txt2.setVisible(true);
+				 txt2.setText("");
+				 lb3.setVisible(true);
+				 lb3.setText("Apellidos");
+				 txt3.setVisible(true);
+				 txt3.setText("");			
+				 lb4.setVisible(true);
+				 lb4.setText("Nacimiento");
+				 txt4.setVisible(true);
+				 txt4.setText("");
+				 lb5.setVisible(true);
+				 lb5.setText("Género");
+				 txt5.setVisible(true);
+				 txt5.setText("");
+				 lb6.setVisible(true);
+				 lb6.setText("Estado");
+				 txt6.setVisible(true);
+				 txt6.setText("");
+				 lb7.setVisible(true);
+				 lb7.setText("Teléfono");
+				 txt7.setVisible(true);
+				 txt7.setText("");
+				 lb8.setVisible(true);
+				 lb8.setText("Correo");
+				 txt8.setVisible(true);
+				 txt8.setText("");
+				 lb9.setVisible(true);
+				 lb9.setText("Dirección");
+				 txt9.setVisible(true);
+				 txt9.setText("");
+				 lb10.setVisible(true);
+				 lb10.setText("Seguro");
+				 txt10.setVisible(true);
+				 txt10.setText("");
+				 lb11.setVisible(true);
+				 lb11.setText("Observaciones");
+				 txt11.setVisible(true);
+				 txt11.setText("");
+			}
+			
+			public void mostrarDoctores(JLabel lb1, JLabel lb2, JLabel lb3, JLabel lb4, JLabel lb5, JLabel lb6,
+					JLabel lb7, JLabel lb8, JLabel lb9, JLabel lb10, JLabel lb11) {
+				lb1.setVisible(true);
+				lb1.setText("DNI");
+				txt1.setVisible(true);
+				 txt1.setText("");
+				 lb2.setVisible(true);
+				 lb2.setText("Nombre");
+				 txt2.setVisible(true);
+				 txt2.setText("");
+				 lb3.setVisible(true);
+				 lb3.setText("Apellidos");
+				 txt3.setVisible(true);
+				 txt3.setText("");			
+				 lb4.setVisible(true);
+				 lb4.setText("Nacimiento");
+				 txt4.setVisible(true);
+				 txt4.setText("");
+				 lb5.setVisible(true);
+				 lb5.setText("Género");
+				 txt5.setVisible(true);
+				 txt5.setText("");
+				 lb6.setVisible(true);
+				 lb6.setText("Estado");
+				 txt6.setVisible(true);
+				 txt6.setText("");
+				 lb7.setVisible(true);
+				 lb7.setText("Teléfono");
+				 txt7.setVisible(true);
+				 txt7.setText("");
+				 lb8.setVisible(true);
+				 lb8.setText("Correo");
+				 txt8.setVisible(true);
+				 txt8.setText("");
+				 lb9.setVisible(true);
+				 lb9.setText("Dirección");
+				 txt9.setVisible(true);
+				 txt9.setText("");
+				 lb10.setVisible(true);
+				 lb10.setText("Especialidad");
+				 txt10.setVisible(true);
+				 txt10.setText("");
+				 lb11.setVisible(true);
+				 lb11.setText("Salario");
+				 txt11.setVisible(true);
+				 txt11.setText("");
+			}
+			
+			public void mostrarFacturacion(JLabel lb1, JLabel lb2, JLabel lb3, JLabel lb4, JLabel lb5, JLabel lb6,
+					JLabel lb7, JLabel lb8, JLabel lb9, JLabel lb10, JLabel lb11) {
+				lb1.setVisible(true);
+				lb1.setText("DNI");
+				txt1.setVisible(true);
+				 txt1.setText("");
+				 lb2.setVisible(true);
+				 lb2.setText("Nombre");
+				 txt2.setVisible(true);
+				 txt2.setText("");
+				 lb3.setVisible(true);
+				 lb3.setText("Apellidos");
+				 txt3.setVisible(true);
+				 txt3.setText("");			
+				 lb4.setVisible(true);
+				 lb4.setText("Tratamiento");
+				 txt4.setVisible(true);
+				 txt4.setText("");
+				 lb5.setVisible(true);
+				 lb5.setText("Teléfono");
+				 txt5.setVisible(true);
+				 txt5.setText("");
+				 lb6.setVisible(true);
+				 lb6.setText("Fecha");
+				 txt6.setVisible(true);
+				 txt6.setText("");
+				 lb7.setVisible(true);
+				 lb7.setText("Pagado");
+				 txt7.setVisible(true);
+				 txt7.setText("");
+				 lb8.setVisible(true);
+				 lb8.setText("Por pagar");
+				 txt8.setVisible(true);
+				 txt8.setText("");
+				 lb9.setVisible(false);
+				 txt9.setVisible(false);
+
+				 lb10.setVisible(false);
+
+				 txt10.setVisible(false);
+
+				 lb11.setVisible(false);
+
+				 txt11.setVisible(false);
+
+			}
 
 			public void mostrarUsuario(JLabel lb1, JLabel lb2, JLabel lb3, JLabel lb4, JLabel lb5, JLabel lb6,
 					JLabel lb7, JLabel lb8, JLabel lb9, JLabel lb10, JLabel lb11) {
+				lb1.setVisible(true);
 				lb1.setText("DNI_usuario");
+				txt1.setVisible(true);
 				 txt1.setText("");
+				 lb2.setVisible(true);
 				 lb2.setText("Contraseña");
+				 txt2.setVisible(true);
 				 txt2.setText("");
+				 lb3.setVisible(true);
 				 lb3.setText("Rol");
+				 txt3.setVisible(true);
 				 txt3.setText("");
 				 				 
 				 lb4.setVisible(false);
@@ -316,13 +581,76 @@ public class Jd_insertarDatos extends JDialog {
 			
 			public void mostrarProveedor(JLabel lb1, JLabel lb2, JLabel lb3, JLabel lb4, JLabel lb5, JLabel lb6,
 					JLabel lb7, JLabel lb8, JLabel lb9, JLabel lb10, JLabel lb11) {
-				lb1.setText("DNI_usuario");
+				lb1.setVisible(true);
+				lb1.setText("ID_producto");
+				txt1.setVisible(true);
 				 txt1.setText("");
-				 lb2.setText("Contraseña");
+				 lb2.setVisible(true);
+				 lb2.setText("Proveedor");
+				 txt2.setVisible(true);
 				 txt2.setText("");
-				 lb3.setText("Rol");
-				 txt3.setText("");
-				 				 
+				 
+				 lb3.setVisible(false);
+				 txt3.setVisible(false);				 				 
+				 lb4.setVisible(false);
+				 txt4.setVisible(false);
+				 lb5.setVisible(false);
+				 txt5.setVisible(false);
+				 lb6.setVisible(false);
+				 txt6.setVisible(false);
+				 lb7.setVisible(false);
+				 txt7.setVisible(false);
+				 lb8.setVisible(false);
+				 txt8.setVisible(false);
+				 lb9.setVisible(false);
+				 txt9.setVisible(false);
+				 lb10.setVisible(false);
+				 txt10.setVisible(false);
+				 lb11.setVisible(false);
+				 txt11.setVisible(false);
+			}
+			
+			public void mostrarEspecialidades(JLabel lb1, JLabel lb2, JLabel lb3, JLabel lb4, JLabel lb5, JLabel lb6,
+					JLabel lb7, JLabel lb8, JLabel lb9, JLabel lb10, JLabel lb11) {
+				lb1.setVisible(true);
+				lb1.setText("Nombre especialidad");
+				txt1.setVisible(true);
+				 txt1.setText("");
+				 lb2.setVisible(false);
+				 txt2.setVisible(false);
+				 lb3.setVisible(false);
+				 txt3.setVisible(false);				 				 
+				 lb4.setVisible(false);
+				 txt4.setVisible(false);
+				 lb5.setVisible(false);
+				 txt5.setVisible(false);
+				 lb6.setVisible(false);
+				 txt6.setVisible(false);
+				 lb7.setVisible(false);
+				 txt7.setVisible(false);
+				 lb8.setVisible(false);
+				 txt8.setVisible(false);
+				 lb9.setVisible(false);
+				 txt9.setVisible(false);
+				 lb10.setVisible(false);
+				 txt10.setVisible(false);
+				 lb11.setVisible(false);
+				 txt11.setVisible(false);
+			}
+			
+			public void mostrarInventario(JLabel lb1, JLabel lb2, JLabel lb3, JLabel lb4, JLabel lb5, JLabel lb6,
+					JLabel lb7, JLabel lb8, JLabel lb9, JLabel lb10, JLabel lb11) {
+				lb1.setVisible(true);
+				lb1.setText("ID_producto");
+				txt1.setVisible(true);
+				 txt1.setText("");
+				 lb2.setVisible(true);
+				 lb2.setText("Cantidad");
+				 txt2.setVisible(true);
+				 txt2.setText("");
+				 
+				 lb3.setVisible(false);
+				 txt3.setVisible(false);				 				 
 				 lb4.setVisible(false);
 				 txt4.setVisible(false);
 				 lb5.setVisible(false);
@@ -346,9 +674,156 @@ public class Jd_insertarDatos extends JDialog {
 		cb_tablas.setBounds(669, 11, 105, 22);
 		getContentPane().add(cb_tablas);
 		
-		JButton btnNewButton = new JButton("New button");
+		JButton btnNewButton = new JButton("Insertar");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				Consultas consulta = new Consultas();
+				consulta.conectar();
+				String[] valores;
+		        String tablaSeleccionada = (String) cb_tablas.getSelectedItem();
+
+		        // Obtén los valores de los campos de texto según la tabla seleccionada
+		        if(tablaSeleccionada.equalsIgnoreCase("usuario")) {
+		        	valores = new String[]{
+		            txt1.getText().toString(),
+		            txt3.getText().toString(),
+		            txt2.getText().toString()
+		            
+		        };
+
+		        // Llama al método de Consultas para insertar datos en la tabla seleccionada
+		        consulta.insertDataIntoTable(tablaSeleccionada, valores);
+		    }//fin del if USUARIOS
+		        else if(tablaSeleccionada.equals("tratamientos")) {
+		        	valores = new String[]{
+				            txt1.getText().toString(),
+				            txt2.getText().toString(),
+				            txt3.getText().toString(),
+				            txt4.getText().toString()
+				            
+				        };
+		        	consulta.insertDataIntoTable(tablaSeleccionada, valores);
+		        }
+		     
+		        else if(tablaSeleccionada.equals("solicitud")) {
+		        	valores = new String[]{
+				            txt1.getText().toString(),
+				            txt2.getText().toString(),
+				            txt3.getText().toString(),				            
+				            
+				        };
+		        	consulta.insertDataIntoTable(tablaSeleccionada, valores);
+		        }
+		        
+		        else if(tablaSeleccionada.equals("proveedor")) {
+		        	valores = new String[]{
+				            txt1.getText().toString(),
+				            txt2.getText().toString(),	
+				            
+				        };
+		        	consulta.insertDataIntoTable(tablaSeleccionada, valores);
+		        }
+		        
+		        else if(tablaSeleccionada.equals("pedidos")) {
+		        	valores = new String[]{
+				            txt1.getText().toString(),
+				            txt2.getText().toString(),	
+				            txt3.getText().toString(),
+				            txt4.getText().toString()
+				        };
+		        	consulta.insertDataIntoTable(tablaSeleccionada, valores);
+		        }
+		       
+		        else if(tablaSeleccionada.equals("pacientes")) {
+		        	valores = new String[]{
+				            txt1.getText().toString(),
+				            txt2.getText().toString(),	
+				            txt3.getText().toString(),
+				            txt4.getText().toString(),
+				            txt5.getText().toString(),
+				            txt6.getText().toString(),	
+				            txt7.getText().toString(),
+				            txt8.getText().toString(),
+				            txt9.getText().toString(),
+				            txt10.getText().toString(),	
+				            txt11.getText().toString()
+				            
+				        };
+		        	consulta.insertDataIntoTable(tablaSeleccionada, valores);
+		        }
+		        
+		        else if(tablaSeleccionada.equals("inventario")) {
+		        	valores = new String[]{
+				            txt1.getText().toString(),
+				            txt2.getText().toString(),	
+				            
+				            
+				        };
+		        	consulta.insertDataIntoTable(tablaSeleccionada, valores);
+		        }
+		        
+		        else if(tablaSeleccionada.equals("historial_pago")) {
+		        	valores = new String[]{
+				            txt1.getText().toString(),
+				            txt2.getText().toString(),	
+				            txt3.getText().toString(),
+				            txt4.getText().toString()
+				            
+				        };
+		        	consulta.insertDataIntoTable(tablaSeleccionada, valores);
+		        }
+		        
+		        else if(tablaSeleccionada.equals("facturacion")) {
+		        	valores = new String[]{
+				            txt1.getText().toString(),
+				            txt2.getText().toString(),	
+				            txt3.getText().toString(),
+				            txt4.getText().toString(),
+				            txt5.getText().toString(),
+				            txt6.getText().toString(),
+				            txt7.getText().toString()
+				            
+				        };
+		        	consulta.insertDataIntoTable(tablaSeleccionada, valores);
+		        }
+		        
+		        else if(tablaSeleccionada.equals("especialidades")) {
+		        	valores = new String[]{
+				            txt1.getText().toString()    				            
+				            
+				        };
+		        	consulta.insertDataIntoTable(tablaSeleccionada, valores);
+		        }
+		        
+		        else if(tablaSeleccionada.equals("doctores")) {
+		        	valores = new String[]{
+		        			 	txt1.getText().toString(),
+					            txt2.getText().toString(),	
+					            txt3.getText().toString(),
+					            txt4.getText().toString(),
+					            txt5.getText().toString(),
+					            txt6.getText().toString(),	
+					            txt7.getText().toString(),
+					            txt8.getText().toString(),
+					            txt9.getText().toString(),
+					            txt10.getText().toString(),	
+					            txt11.getText().toString()
+				            
+				        };
+		        	consulta.insertDataIntoTable(tablaSeleccionada, valores);
+		        }
+		        
+		        else if(tablaSeleccionada.equals("citas")) {
+		        	valores = new String[]{
+				            txt1.getText().toString(),
+				            txt2.getText().toString(),	
+				            txt3.getText().toString(),
+				            txt4.getText().toString()
+				            
+				        };
+		        	consulta.insertDataIntoTable(tablaSeleccionada, valores);
+		        }
+		        
 			}
 		});
 		btnNewButton.setBounds(20, 311, 89, 23);

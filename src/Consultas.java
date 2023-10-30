@@ -14,8 +14,10 @@ public class Consultas {
 		private static final String CLAVE = "1234";
 		ResultSet resultado ;
 		Connection conect  ;
-		Statement statement;
+		private Statement statement;
 
+
+		
 
 		static {
 			try {
@@ -27,19 +29,15 @@ public class Consultas {
 		}
 		
 		public Connection conectar() {
-
-			try {
-				conect = DriverManager.getConnection(URL, USUARIO, CLAVE);
-				System.out.println("Conexión OK");
-				 statement = conect.createStatement();
-				
-
-			} catch (SQLException e) {
-				System.out.println("Error en la conexión");
-				e.printStackTrace();
-			}
-			
-			return conect;
+		    try {
+		        conect = DriverManager.getConnection(URL, USUARIO, CLAVE);
+		        System.out.println("Conexión OK");
+		        this.statement = conect.createStatement(); // Inicializar el objeto statement aquí
+		    } catch (SQLException e) {
+		        System.out.println("Error en la conexión");
+		        e.printStackTrace();
+		    }
+		    return conect;
 		}
 		
 		 public void desconectar()throws SQLException{
@@ -66,26 +64,42 @@ public class Consultas {
 		        }
 		    }
 		 
+		 public void insertarTablasMostrar(Jd_insertarDatos datos) throws SQLException {
+			    // consulta para ver nombre de tablas
+			    statement = conect.createStatement();
+			    try {
+			        String sql = "SHOW TABLES";
+			        ResultSet rs = statement.executeQuery(sql);
+
+			        // sacar datos del result set
+			        while (rs.next()) {
+			            // saca el nombre de la tabla
+			            tablaNombre = rs.getString(1);
+			            datos.setCb_tablasItems(tablaNombre);
+			        }
+			    } finally {
+			        if (statement != null) {
+			            statement.close();
+			        }
+			    }
+			}
+		 
 		 public void insertDataIntoTable(String tablaNombre, String[] valores) {
 		        try {
-		            statement = conect.createStatement();
+		           
 		            StringBuilder query = new StringBuilder("INSERT INTO " + tablaNombre + " VALUES (");
 		            for (int i = 0; i < valores.length; i++) {
 		                query.append(i == 0 ? "" : ", ").append("'").append(valores[i]).append("'");
 		            }
 		            query.append(")");
 
-		            statement.executeUpdate(query.toString());
+		            this.statement.executeUpdate(query.toString());
 		            System.out.println("Inserción exitosa en la tabla " + tablaNombre);
 
 		        } catch (SQLException e) {
 		            e.printStackTrace();
 		            System.err.println("Error al insertar datos en la tabla " + tablaNombre);
 		        }
-		 
-		 
+		    }
 }
-}
-
-
 
