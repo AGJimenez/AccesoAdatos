@@ -1,12 +1,14 @@
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.Color;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
+import java.util.List;
 import java.awt.event.ActionEvent;
 
 public class Interfaz extends JFrame {
@@ -75,13 +77,29 @@ public class Interfaz extends JFrame {
 		JButton btnNewButton_1 = new JButton("Actualizar datos");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Jd_verDatos mostrar = new Jd_verDatos();
-				try {
-                    conectar.verTablas(mostrar); // Llama al método verTablas y pasa la instancia de Jd_verDatos
-                } catch (SQLException throwables) {
-                    throwables.printStackTrace();
-                }
-				mostrar.setVisible(true);
+			
+				Object[] options = {"usuario", "citas", "doctores", "pacientes", "facturacion", "especialidades", "tratamientos", "proveedor", "pedidos", "solicitud", "inventario", "historial_pago"};
+		        int choice = JOptionPane.showOptionDialog(null, "Selecciona un valor", "Opción",
+		                JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
+		                null, options, options[0]);
+
+		     // En tu acción de botón existente
+		        if (choice != JOptionPane.CLOSED_OPTION) {
+		            String selectedValue = options[choice].toString();
+		            System.out.println("Valor seleccionado: " + selectedValue);
+
+		            try {
+		                Consultas consultas = new Consultas();
+		                consultas.conectar();
+		                List<String[]> datos = consultas.obtenerDatosDeTabla(selectedValue);
+		                Jd_verDatos dialog = new Jd_verDatos();
+		                dialog.setDatos(datos);
+		                dialog.setVisible(true);
+		            } catch (SQLException ex) {
+		                ex.printStackTrace();
+		            }
+		        }
+
 				//MOSTRAR DATOS
 			}
 		});
@@ -92,11 +110,7 @@ public class Interfaz extends JFrame {
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Jd_verDatos mostrar = new Jd_verDatos();
-				try {
-                    conectar.verTablas(mostrar); // Llama al método verTablas y pasa la instancia de Jd_verDatos
-                } catch (SQLException throwables) {
-                    throwables.printStackTrace();
-                }
+				
 				mostrar.setVisible(true);
 				//MOSTRAR DATOS
 			}
@@ -108,11 +122,7 @@ public class Interfaz extends JFrame {
 		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Jd_verDatos mostrar = new Jd_verDatos();
-				try {
-                    conectar.verTablas(mostrar); // Llama al método verTablas y pasa la instancia de Jd_verDatos
-                } catch (SQLException throwables) {
-                    throwables.printStackTrace();
-                }
+				
 				mostrar.setVisible(true);
 				//MOSTRAR DATOS
 				

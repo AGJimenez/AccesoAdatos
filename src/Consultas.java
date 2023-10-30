@@ -2,8 +2,10 @@ import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Consultas {
@@ -50,19 +52,7 @@ public class Consultas {
 		        }
 		        }//cerramos desconcetar
 		 
-		 public void verTablas(Jd_verDatos datos) throws SQLException {
-		        // consulta para ver nombre de tablas
-		        statement = conect.createStatement();
-		        String sql = "SHOW TABLES";
-		        ResultSet rs = statement.executeQuery(sql);
-
-		        // sacar datos del result set
-		        while (rs.next()) {
-		            // saca el nombre de la tabla
-		            tablaNombre = rs.getString(1);
-		            datos.setCb_tablasItems(tablaNombre);
-		        }
-		    }
+		
 		 
 		 public void insertarTablasMostrar(Jd_insertarDatos datos) throws SQLException {
 			    // consulta para ver nombre de tablas
@@ -84,6 +74,8 @@ public class Consultas {
 			    }
 			}
 		 
+		
+		 
 		 public void insertDataIntoTable(String tablaNombre, String[] valores) {
 		        try {
 		           
@@ -101,5 +93,30 @@ public class Consultas {
 		            System.err.println("Error al insertar datos en la tabla " + tablaNombre);
 		        }
 		    }
+		 
+		    public List<String[]> obtenerDatosDeTabla(String nombreTabla) throws SQLException {
+		        List<String[]> datos = new ArrayList<>();
+		        try {
+		            Statement statement = conect.createStatement();
+		            ResultSet resultSet = statement.executeQuery("SELECT * FROM " + nombreTabla);
+
+		            ResultSetMetaData metaData = resultSet.getMetaData();
+		            int columnCount = metaData.getColumnCount();
+
+		            while (resultSet.next()) {
+		                String[] fila = new String[columnCount];
+		                for (int i = 0; i < columnCount; i++) {
+		                    fila[i] = resultSet.getString(i + 1);
+		                }
+		                datos.add(fila);
+		            }
+		        } catch (SQLException e) {
+		            e.printStackTrace();
+		            System.err.println("Error al obtener los datos de la tabla " + nombreTabla);
+		        }
+		        return datos;
+		    }
+		
+		
 }
 
