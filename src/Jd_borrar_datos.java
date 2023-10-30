@@ -12,7 +12,7 @@ import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JButton;
 
-public class Jd_insertarDatos extends JDialog {
+public class Jd_borrar_datos extends JDialog {
 	Consultas consulta;
 	JComboBox cb_tablas = new JComboBox();
 	private static final long serialVersionUID = 1L;
@@ -35,7 +35,7 @@ public class Jd_insertarDatos extends JDialog {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Jd_insertarDatos dialog = new Jd_insertarDatos();
+					Jd_borrar_datos dialog = new Jd_borrar_datos();
 					dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 					dialog.setVisible(true);
 				} catch (Exception e) {
@@ -48,7 +48,7 @@ public class Jd_insertarDatos extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
-	public Jd_insertarDatos() {
+	public Jd_borrar_datos() {
 		getContentPane().setBackground(Color.DARK_GRAY);
 		setBounds(100, 100, 800, 400);
 		getContentPane().setLayout(null);
@@ -132,63 +132,112 @@ public class Jd_insertarDatos extends JDialog {
 		
 		JLabel lb7 = new JLabel("DNI_usuario");
 		lb7.setFont(new Font("Arial", Font.PLAIN, 14));
-		lb7.setBounds(196, 14, 69, 14);
+		lb7.setBounds(420, 14, 69, 14);
 		panelContenedor.add(lb7);
 		
 		txt7 = new JTextField();
 		txt7.setFont(new Font("Arial", Font.PLAIN, 14));
 		txt7.setText("dni");
 		txt7.setColumns(10);
-		txt7.setBounds(275, 11, 86, 20);
+		txt7.setBounds(499, 11, 86, 20);
 		panelContenedor.add(txt7);
 		
 		JLabel lb8 = new JLabel("DNI_usuario");
 		lb8.setFont(new Font("Arial", Font.PLAIN, 14));
-		lb8.setBounds(196, 42, 69, 14);
+		lb8.setBounds(420, 42, 69, 14);
 		panelContenedor.add(lb8);
 		
 		txt8 = new JTextField();
 		txt8.setFont(new Font("Arial", Font.PLAIN, 14));
 		txt8.setText("dni");
 		txt8.setColumns(10);
-		txt8.setBounds(275, 39, 86, 20);
+		txt8.setBounds(499, 39, 86, 20);
 		panelContenedor.add(txt8);
 		
 		JLabel lb9 = new JLabel("DNI_usuario");
 		lb9.setFont(new Font("Arial", Font.PLAIN, 14));
-		lb9.setBounds(196, 73, 69, 14);
+		lb9.setBounds(420, 73, 69, 14);
 		panelContenedor.add(lb9);
 		
 		txt9 = new JTextField();
 		txt9.setFont(new Font("Arial", Font.PLAIN, 14));
 		txt9.setText("dni");
 		txt9.setColumns(10);
-		txt9.setBounds(275, 70, 86, 20);
+		txt9.setBounds(499, 70, 86, 20);
 		panelContenedor.add(txt9);
 		
 		JLabel lb10 = new JLabel("DNI_usuario");
 		lb10.setFont(new Font("Arial", Font.PLAIN, 14));
-		lb10.setBounds(196, 98, 69, 14);
+		lb10.setBounds(420, 101, 69, 14);
 		panelContenedor.add(lb10);
 		
 		txt10 = new JTextField();
 		txt10.setFont(new Font("Arial", Font.PLAIN, 14));
 		txt10.setText("dni");
 		txt10.setColumns(10);
-		txt10.setBounds(275, 95, 86, 20);
+		txt10.setBounds(499, 98, 86, 20);
 		panelContenedor.add(txt10);
 		
 		JLabel lb11 = new JLabel("DNI_usuario");
 		lb11.setFont(new Font("Arial", Font.PLAIN, 14));
-		lb11.setBounds(196, 126, 69, 14);
+		lb11.setBounds(420, 129, 69, 14);
 		panelContenedor.add(lb11);
 		
 		txt11 = new JTextField();
 		txt11.setFont(new Font("Arial", Font.PLAIN, 14));
 		txt11.setText("dni");
 		txt11.setColumns(10);
-		txt11.setBounds(275, 123, 86, 20);
+		txt11.setBounds(499, 126, 86, 20);
 		panelContenedor.add(txt11);
+		
+		JButton btnBorrar = new JButton("Borrar");
+		btnBorrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
+		btnBorrar.setBounds(196, 14, 89, 23);
+		panelContenedor.add(btnBorrar);
+		
+		JButton btnBorrar_1 = new JButton("Borrar");
+		btnBorrar_1.setBounds(196, 42, 89, 23);
+		panelContenedor.add(btnBorrar_1);
+		
+		JButton btnBorrar_2 = new JButton("Borrar");
+		btnBorrar_2.setBounds(196, 70, 89, 23);
+		panelContenedor.add(btnBorrar_2);
+		
+		JButton btnBorrar_3 = new JButton("Borrar");
+		btnBorrar_3.setBounds(196, 98, 89, 23);
+		panelContenedor.add(btnBorrar_3);
+		
+		JButton btnBorrar_4 = new JButton("Borrar");
+		btnBorrar_4.setBounds(196, 126, 89, 23);
+		panelContenedor.add(btnBorrar_4);
+		
+		JButton btnBorrar_5 = new JButton("Borrar");
+		btnBorrar_5.setBounds(196, 154, 89, 23);
+		panelContenedor.add(btnBorrar_5);
+		
+		JButton btnBorrar_10 = new JButton("Borrar");
+		btnBorrar_10.setBounds(601, 11, 89, 23);
+		panelContenedor.add(btnBorrar_10);
+		
+		JButton btnBorrar_9 = new JButton("Borrar");
+		btnBorrar_9.setBounds(601, 42, 89, 23);
+		panelContenedor.add(btnBorrar_9);
+		
+		JButton btnBorrar_8 = new JButton("Borrar");
+		btnBorrar_8.setBounds(601, 70, 89, 23);
+		panelContenedor.add(btnBorrar_8);
+		
+		JButton btnBorrar_7 = new JButton("Borrar");
+		btnBorrar_7.setBounds(601, 98, 89, 23);
+		panelContenedor.add(btnBorrar_7);
+		
+		JButton btnBorrar_6 = new JButton("Borrar");
+		btnBorrar_6.setBounds(601, 126, 89, 23);
+		panelContenedor.add(btnBorrar_6);
 		cb_tablas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				 String tablaSeleccionada = (String) cb_tablas.getSelectedItem();
@@ -345,14 +394,6 @@ public class Jd_insertarDatos extends JDialog {
 		
 		cb_tablas.setBounds(669, 11, 105, 22);
 		getContentPane().add(cb_tablas);
-		
-		JButton btnNewButton = new JButton("New button");
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnNewButton.setBounds(20, 311, 89, 23);
-		getContentPane().add(btnNewButton);
 		
 		
 
