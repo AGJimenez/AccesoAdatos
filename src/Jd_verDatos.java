@@ -32,7 +32,7 @@ public class Jd_verDatos extends JDialog {
         getContentPane().setLayout(null);
 
         Consultas consultas = new Consultas();
-        DefaultTableModel model = consultas.obtenerDatosTabla();
+        DefaultTableModel model = consultas.obtenerDatosTabla_doctores();
 
         // Crear la tabla usando el modelo
         table = new JTable(model);

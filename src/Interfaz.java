@@ -104,8 +104,12 @@ public class Interfaz extends JFrame {
 		JButton btnNewButton_2 = new JButton("Borrar datos");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Jd_verDatos mostrar = new Jd_verDatos();
-				
+				Jd_borrar_datos mostrar = new Jd_borrar_datos();
+				try {
+                    conectar.insertarTablasMostrar_borrar(mostrar); // Llama al método verTablas y pasa la instancia de Jd_verDatos
+                } catch (SQLException throwables) {
+                    throwables.printStackTrace();
+                }
 				mostrar.setVisible(true);
 				//MOSTRAR DATOS
 			}
