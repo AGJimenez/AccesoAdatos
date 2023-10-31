@@ -815,6 +815,167 @@ public class Consultas {
 		        }
 		    }
 		    
+		    public void actualizar_tratamientos(String DNI_paciente, String Doctor, String Apagar) {
+		        String sql = "UPDATE tratamientos SET Doctor = ?, A pagar = ? WHERE DNI_paciente = ?";
+
+		        try (Connection connection = this.conectar();
+		             PreparedStatement pstmt = connection.prepareStatement(sql)) {
+		            pstmt.setString(1, DNI_paciente);
+		            pstmt.setString(2, Doctor);
+		            pstmt.setString(3, Apagar);
+		            pstmt.executeUpdate();
+		        } catch (SQLException e) {
+		            System.out.println(e.getMessage());
+		        }
+		    }
+		    
+		    public void actualizar_solicitud(String DNI, String Cantidad) {
+		        String sql = "UPDATE solicitud SET Cantidad = ? WHERE DNI = ?";
+
+		        try (Connection connection = this.conectar();
+		             PreparedStatement pstmt = connection.prepareStatement(sql)) {
+		            pstmt.setString(1, DNI);
+		            pstmt.setString(2, Cantidad);
+		            pstmt.executeUpdate();
+		        } catch (SQLException e) {
+		            System.out.println(e.getMessage());
+		        }
+		    }
+		    
+		    public void actualizar_proveedor(String ID_producto, String Proveedor) {
+		        String sql = "UPDATE proveedor SET Proveedor = ? WHERE ID_producto = ?";
+
+		        try (Connection connection = this.conectar();
+		             PreparedStatement pstmt = connection.prepareStatement(sql)) {
+		            pstmt.setString(1, ID_producto);
+		            pstmt.setString(2, Proveedor);
+		            pstmt.executeUpdate();
+		        } catch (SQLException e) {
+		            System.out.println(e.getMessage());
+		        }
+		    }
+		    
+		    public void actualizar_pedidos(String ID_pedido, String Producto, String Cantidad, String Precio) {
+		        String sql = "UPDATE pedidos SET Producto = ?, Cantidad = ?, Precio = ? WHERE ID_pedido = ?";
+
+		        try (Connection connection = this.conectar();
+		             PreparedStatement pstmt = connection.prepareStatement(sql)) {
+		            pstmt.setString(1, ID_pedido);
+		            pstmt.setString(2, Producto);
+		            pstmt.setString(3, Cantidad);
+		            pstmt.setString(4, Precio);
+		            pstmt.executeUpdate();
+		        } catch (SQLException e) {
+		            System.out.println(e.getMessage());
+		        }
+		    }
+		    
+		    public void actualizar_pacientes(String DNI_paciente, String Nombre, String Apellidos, String Nacimiento, String Genero, String Estado
+		    		, String Telefono, String Correo, String Direccion, String Seguro, String Observacion) {
+		        String sql = "UPDATE pacientes SET Nombre = ?, Apellidos = ?, Nacimiento = ?, Genero = ?, Estado = ?, Telefono = ?, Correo = ?, Direccion = ?, Seguro = ?, Observacion = ? WHERE DNI_paciente = ?";
+
+		        try (Connection connection = this.conectar();
+		             PreparedStatement pstmt = connection.prepareStatement(sql)) {
+		            pstmt.setString(1, DNI_paciente);
+		            pstmt.setString(2, Nombre);
+		            pstmt.setString(3, Apellidos);
+		            pstmt.setString(4, Nacimiento);
+		            pstmt.setString(5, Genero);
+		            pstmt.setString(6, Estado);
+		            pstmt.setString(7, Telefono);
+		            pstmt.setString(8, Correo);
+		            pstmt.setString(9, Direccion);
+		            pstmt.setString(10, Seguro);
+		            pstmt.setString(11, Observacion);
+		            pstmt.executeUpdate();
+		        } catch (SQLException e) {
+		            System.out.println(e.getMessage());
+		        }
+		    }
+		    
+		    public void actualizar_inventario(String ID_producto, String Cantidad) {
+		        String sql = "UPDATE inventario SET Cantidad = ? WHERE ID_producto = ?";
+
+		        try (Connection connection = this.conectar();
+		             PreparedStatement pstmt = connection.prepareStatement(sql)) {
+		            pstmt.setString(1, ID_producto);
+		            pstmt.setString(2, Cantidad);
+		            pstmt.executeUpdate();
+		        } catch (SQLException e) {
+		            System.out.println(e.getMessage());
+		        }
+		    }
+		    
+		    public void actualizar_historial_pago(String DNI, String Cantidad, String Fecha, String Tipo) {
+		        String sql = "UPDATE historial_pago SET Cantidad = ?, Fecha = ?, Tipo = ? WHERE DNI = ?";
+
+		        try (Connection connection = this.conectar();
+		             PreparedStatement pstmt = connection.prepareStatement(sql)) {
+		            pstmt.setString(1, DNI);
+		            pstmt.setString(2, Cantidad);
+		            pstmt.setString(3, Fecha);
+		            pstmt.setString(4, Tipo);
+		            pstmt.executeUpdate();
+		        } catch (SQLException e) {
+		            System.out.println(e.getMessage());
+		        }
+		    }
+		    
+		    public void actualizar_facturacion(String DNI, String Nombre, String Apellidos, String Tratamiento, String Telefono, String Fecha
+		    		, String Pagado, String Porpagar) {
+		        String sql = "UPDATE facturacion SET Nombre = ?, Apellidos = ?, Tratamiento = ?, Telefono = ?, Fecha = ?, Pagado = ?, Por pagar = ? WHERE DNI = ?";
+
+		        try (Connection connection = this.conectar();
+		             PreparedStatement pstmt = connection.prepareStatement(sql)) {
+		            pstmt.setString(1, DNI);
+		            pstmt.setString(2, Nombre);
+		            pstmt.setString(3, Apellidos);
+		            pstmt.setString(4, Tratamiento);
+		            pstmt.setString(5, Telefono);
+		            pstmt.setString(6, Fecha);
+		            pstmt.setString(7, Pagado);
+		            pstmt.setString(8, Porpagar);
+		            pstmt.executeUpdate();
+		        } catch (SQLException e) {
+		            System.out.println(e.getMessage());
+		        }
+		    }
+		    
+		    public void actualizar_especialidades(String  Nombre_especialidad) {
+		        String sql = "UPDATE especialidades SET Nombre_especialidad= ? WHERE Nombre_especialidad = ?";
+
+		        try (Connection connection = this.conectar();
+		             PreparedStatement pstmt = connection.prepareStatement(sql)) {
+		            pstmt.setString(1, Nombre_especialidad);
+		            pstmt.executeUpdate();
+		        } catch (SQLException e) {
+		            System.out.println(e.getMessage());
+		        }
+		    }
+		    
+		    public void actualizar_doctores(String DNI_doctor, String Nombre, String Apellidos, String Nacimiento, String Genero, String Estado
+		    		, String Telefono, String Correo, String Direccion, String Especialidad, String Salario) {
+		        String sql = "UPDATE doctores SET Nombre = ?, Apellidos = ?, Nacimiento = ?, Genero = ?, Estado = ?, Telefono = ?, Correo = ?, Direccion = ?, Especialidad = ?, Salario = ? WHERE DNI_doctor = ?";
+
+		        try (Connection connection = this.conectar();
+		             PreparedStatement pstmt = connection.prepareStatement(sql)) {
+		            pstmt.setString(1, DNI_doctor);
+		            pstmt.setString(2, Nombre);
+		            pstmt.setString(3, Apellidos);
+		            pstmt.setString(4, Nacimiento);
+		            pstmt.setString(5, Genero);
+		            pstmt.setString(6, Estado);
+		            pstmt.setString(7, Telefono);
+		            pstmt.setString(8, Correo);
+		            pstmt.setString(9, Direccion);
+		            pstmt.setString(10, Especialidad);
+		            pstmt.setString(11, Salario);
+		            pstmt.executeUpdate();
+		        } catch (SQLException e) {
+		            System.out.println(e.getMessage());
+		        }
+		    }
+		    
 }
 
 
