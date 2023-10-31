@@ -76,25 +76,15 @@ public class Interfaz extends JFrame {
 		
 		JButton btnNewButton_1 = new JButton("Actualizar datos");
 		btnNewButton_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			
-				Object[] options = {"usuario", "citas", "doctores", "pacientes", "facturacion", "especialidades", "tratamientos", "proveedor", "pedidos", "solicitud", "inventario", "historial_pago"};
-		        int choice = JOptionPane.showOptionDialog(null, "Selecciona un valor", "Opción",
-		                JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
-		                null, options, options[0]);
-
-		     // En tu acción de botón existente
-		        if (choice != JOptionPane.CLOSED_OPTION) {
-		            String selectedValue = options[choice].toString();
-		            System.out.println("Valor seleccionado: " + selectedValue);
-
-		            Consultas consultas = new Consultas();
-					consultas.conectar();
-           
-					Jd_verDatos dialog = new Jd_verDatos();
-					dialog.setVisible(true);
-		        }
-
+			public void actionPerformed(ActionEvent e) {		
+				Jd_actualizarDatos datos = new Jd_actualizarDatos();
+				datos.setVisible(true);
+				try {
+                    conectar.modificarTablasMostrar(datos); // Llama al método verTablas y pasa la instancia de Jd_verDatos
+                } catch (SQLException throwables) {
+                    throwables.printStackTrace();
+                }
+				datos.setVisible(true);
 				//MOSTRAR DATOS
 			}
 		});
@@ -121,7 +111,11 @@ public class Interfaz extends JFrame {
 		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Jd_verDatos mostrar = new Jd_verDatos();
-				
+				try {
+                    conectar.selectTablasMostrar(mostrar); // Llama al método verTablas y pasa la instancia de Jd_verDatos
+                } catch (SQLException throwables) {
+                    throwables.printStackTrace();
+                }
 				mostrar.setVisible(true);
 				//MOSTRAR DATOS
 				

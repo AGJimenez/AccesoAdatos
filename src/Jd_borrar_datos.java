@@ -2,6 +2,7 @@ import java.awt.EventQueue;
 
 import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JComboBox;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -17,6 +18,8 @@ import javax.swing.JButton;
 public class Jd_borrar_datos extends JDialog {
 	Consultas consulta;
 	JComboBox cb_tablas = new JComboBox();
+	private JTable currentTable = null;
+
 	private JTable table1=null;
 	private JTable table2=null;
 	private JTable table3=null;
@@ -528,8 +531,73 @@ public class Jd_borrar_datos extends JDialog {
 		});
 		
 		
-		cb_tablas.setBounds(669, 11, 105, 22);
+		cb_tablas.setBounds(669, 328, 105, 22);
 		getContentPane().add(cb_tablas);
+		
+		JButton btn_delete = new JButton("Borrar");
+		btn_delete.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(cb_tablas.getSelectedItem().toString().equals("usuario")) {
+				String borrar = JOptionPane.showInputDialog("Introduce el DNI del usuario que quieres borrar");
+				Consultas consulta = new Consultas();		
+				consulta.deleteUsuario(borrar);
+				}
+				else if(cb_tablas.getSelectedItem().toString().equals("doctores")) {
+					String borrar = JOptionPane.showInputDialog("Introduce el DNI del doctor que quieres borrar");
+					Consultas consulta = new Consultas();		
+					consulta.deleteDoctor(borrar);
+					}
+				else if(cb_tablas.getSelectedItem().toString().equals("tratamientos")) {
+					String borrar = JOptionPane.showInputDialog("Introduce el id");
+					Consultas consulta = new Consultas();		
+					consulta.deleteTratamiento(borrar);
+					}
+				else if(cb_tablas.getSelectedItem().toString().equals("citas")) {
+					String borrar = JOptionPane.showInputDialog("Introduce el DNI del paciente");
+					String borrar2 = JOptionPane.showInputDialog("Introduce la fecha en la que estuvo (AAAA-MM-DD)");
+					Consultas consulta = new Consultas();		
+					consulta.deleteCita(borrar,borrar2);
+					}
+				else if(cb_tablas.getSelectedItem().toString().equals("facturacion")) {
+					String borrar = JOptionPane.showInputDialog("Introduce el ID de la factura a borrar");
+					Consultas consulta = new Consultas();		
+					consulta.deleteFactura(borrar);
+					}
+				else if(cb_tablas.getSelectedItem().toString().equals("historial_pago")) {
+					String borrar = JOptionPane.showInputDialog("Introduce el DNI del paciente");
+					String borrar2 = JOptionPane.showInputDialog("Introduce la fecha en la que pagó");
+					Consultas consulta = new Consultas();		
+					consulta.deletePago(borrar,borrar2);
+					}
+				else if(cb_tablas.getSelectedItem().toString().equals("pacientes")) {
+					String borrar = JOptionPane.showInputDialog("Introduce el DNI del paciente");
+					Consultas consulta = new Consultas();		
+					consulta.deletePaciente(borrar);
+					}
+				else if(cb_tablas.getSelectedItem().toString().equals("especialidades")) {
+					String borrar = JOptionPane.showInputDialog("Nombre de la especialidad a borrar");
+					Consultas consulta = new Consultas();		
+					consulta.deleteEspecialidad(borrar);
+					}
+				else if(cb_tablas.getSelectedItem().toString().equals("solicitud")) {
+					String borrar = JOptionPane.showInputDialog("Introduce el ID de la solicitud");
+					Consultas consulta = new Consultas();		
+					consulta.deleteSolicitud(borrar);
+					}
+				else if(cb_tablas.getSelectedItem().toString().equals("pedidos")) {
+					String borrar = JOptionPane.showInputDialog("Introduce el ID del pedido");
+					Consultas consulta = new Consultas();		
+					consulta.deletePedido(borrar);
+					}
+				else if(cb_tablas.getSelectedItem().toString().equals("proveedores")) {
+					String borrar = JOptionPane.showInputDialog("Introduce el nombre del proveedor");
+					Consultas consulta = new Consultas();		
+					consulta.deleteProveedor(borrar);
+					}
+			}
+		});
+		btn_delete.setBounds(10, 328, 89, 23);
+		getContentPane().add(btn_delete);
 		
 		
 

@@ -1,6 +1,7 @@
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
@@ -96,6 +97,46 @@ public class Consultas {
 			        }
 			    }
 			}
+		 
+		 public void modificarTablasMostrar(Jd_actualizarDatos datos) throws SQLException {
+			    // consulta para ver nombre de tablas
+			    statement = conect.createStatement();
+			    try {
+			        String sql = "SHOW TABLES";
+			        ResultSet rs = statement.executeQuery(sql);
+
+			        // sacar datos del result set
+			        while (rs.next()) {
+			            // saca el nombre de la tabla
+			            tablaNombre = rs.getString(1);
+			            datos.setCb_tablasItems(tablaNombre);
+			        }
+			    } finally {
+			        if (statement != null) {
+			            statement.close();
+			        }
+			    }
+			}
+		 
+		 public void selectTablasMostrar(Jd_verDatos datos) throws SQLException {
+			    // consulta para ver nombre de tablas
+			    statement = conect.createStatement();
+			    try {
+			        String sql = "SHOW TABLES";
+			        ResultSet rs = statement.executeQuery(sql);
+
+			        // sacar datos del result set
+			        while (rs.next()) {
+			            // saca el nombre de la tabla
+			            tablaNombre = rs.getString(1);
+			            datos.setCb_tablasItems(tablaNombre);
+			        }
+			    } finally {
+			        if (statement != null) {
+			            statement.close();
+			        }
+			    }
+			}
 		
 		 
 		 public void insertDataIntoTable(String tablaNombre, String[] valores) {
@@ -119,7 +160,7 @@ public class Consultas {
 		  
 		    public DefaultTableModel obtenerDatosTabla_citas() {
 		        DefaultTableModel model = new DefaultTableModel();
-		        Jd_borrar_datos ventana = new Jd_borrar_datos();
+		        Jd_verDatos ventana = new Jd_verDatos();
 
 		        // Conexión a la base de datos
 		        try {
@@ -156,7 +197,7 @@ public class Consultas {
 		    
 		    public DefaultTableModel obtenerDatosTabla_doctores() {
 		        DefaultTableModel model = new DefaultTableModel();
-		        Jd_borrar_datos ventana = new Jd_borrar_datos();
+		        Jd_verDatos ventana = new Jd_verDatos();
 
 		        // Conexión a la base de datos
 		        try {
@@ -193,7 +234,7 @@ public class Consultas {
 		    
 		    public DefaultTableModel obtenerDatosTabla_especialidades() {
 		        DefaultTableModel model = new DefaultTableModel();
-		        Jd_borrar_datos ventana = new Jd_borrar_datos();
+		        Jd_verDatos ventana = new Jd_verDatos();
 
 		        // Conexión a la base de datos
 		        try {
@@ -230,7 +271,7 @@ public class Consultas {
 		    
 		    public DefaultTableModel obtenerDatosTabla_facturacion() {
 		        DefaultTableModel model = new DefaultTableModel();
-		        Jd_borrar_datos ventana = new Jd_borrar_datos();
+		        Jd_verDatos ventana = new Jd_verDatos();
 
 		        // Conexión a la base de datos
 		        try {
@@ -267,7 +308,7 @@ public class Consultas {
 		    
 		    public DefaultTableModel obtenerDatosTabla_historial_pago() {
 		        DefaultTableModel model = new DefaultTableModel();
-		        Jd_borrar_datos ventana = new Jd_borrar_datos();
+		        Jd_verDatos ventana = new Jd_verDatos();
 
 		        // Conexión a la base de datos
 		        try {
@@ -304,7 +345,7 @@ public class Consultas {
 		    
 		    public DefaultTableModel obtenerDatosTabla_inventario() {
 		        DefaultTableModel model = new DefaultTableModel();
-		        Jd_borrar_datos ventana = new Jd_borrar_datos();
+		        Jd_verDatos ventana = new Jd_verDatos();
 
 		        // Conexión a la base de datos
 		        try {
@@ -341,7 +382,7 @@ public class Consultas {
 		    
 		    public DefaultTableModel obtenerDatosTabla_pacientes() {
 		        DefaultTableModel model = new DefaultTableModel();
-		        Jd_borrar_datos ventana = new Jd_borrar_datos();
+		        Jd_verDatos ventana = new Jd_verDatos();
 
 		        // Conexión a la base de datos
 		        try {
@@ -378,7 +419,7 @@ public class Consultas {
 		    
 		    public DefaultTableModel obtenerDatosTabla_proveedor() {
 		        DefaultTableModel model = new DefaultTableModel();
-		        Jd_borrar_datos ventana = new Jd_borrar_datos();
+		        Jd_verDatos ventana = new Jd_verDatos();
 
 		        // Conexión a la base de datos
 		        try {
@@ -415,7 +456,7 @@ public class Consultas {
 		    
 		    public DefaultTableModel obtenerDatosTabla_solicitud() {
 		        DefaultTableModel model = new DefaultTableModel();
-		        Jd_borrar_datos ventana = new Jd_borrar_datos();
+		        Jd_verDatos ventana = new Jd_verDatos();
 
 		        // Conexión a la base de datos
 		        try {
@@ -452,7 +493,7 @@ public class Consultas {
 		    
 		    public DefaultTableModel obtenerDatosTabla_tratamientos() {
 		        DefaultTableModel model = new DefaultTableModel();
-		        Jd_borrar_datos ventana = new Jd_borrar_datos();
+		        Jd_verDatos ventana = new Jd_verDatos();
 
 		        // Conexión a la base de datos
 		        try {
@@ -489,8 +530,7 @@ public class Consultas {
 		    
 		    public DefaultTableModel obtenerDatosTabla_usuario() {
 		        DefaultTableModel model = new DefaultTableModel();
-		        Jd_borrar_datos ventana = new Jd_borrar_datos();
-
+		        Jd_verDatos ventana = new Jd_verDatos();
 		        // Conexión a la base de datos
 		        try {
 		          this.conectar();
@@ -526,7 +566,7 @@ public class Consultas {
 		    
 		    public DefaultTableModel obtenerDatosTabla_pedidos() {
 		        DefaultTableModel model = new DefaultTableModel();
-		        Jd_borrar_datos ventana = new Jd_borrar_datos();
+		        Jd_verDatos ventana = new Jd_verDatos();
 
 		        // Conexión a la base de datos
 		        try {
@@ -561,8 +601,166 @@ public class Consultas {
 		        return model;
 		    }
 		
-		
-		
+		    public void deleteUsuario(String DNI_usuario) {
+		        String sql = "DELETE FROM usuario WHERE DNI_usuario = ?";
+
+		        try (Connection connection = this.conectar();
+		             PreparedStatement pstmt = connection.prepareStatement(sql)) {
+		            pstmt.setString(1, DNI_usuario);
+		            pstmt.executeUpdate();
+		        } catch (SQLException e) {
+		            System.out.println(e.getMessage());
+		        }
+		    }
+		    
+		    public void deleteTratamiento(String ID_tratamiento) {
+		        String sql = "DELETE FROM tratamientos WHERE ID_tratamiento = ?";
+
+		        try (Connection connection = this.conectar();
+		             PreparedStatement pstmt = connection.prepareStatement(sql)) {
+		            pstmt.setString(1, ID_tratamiento);
+		            pstmt.executeUpdate();
+		        } catch (SQLException e) {
+		            System.out.println(e.getMessage());
+		        }
+		    }
+		    
+		    public void deleteCita(String DNI_paciente, String fecha) {
+		        String sql = "DELETE FROM citas WHERE DNI_paciente = ? AND Fecha = ?";
+
+		        try (Connection connection = this.conectar();
+		             PreparedStatement pstmt = connection.prepareStatement(sql)) {
+		            pstmt.setString(1, DNI_paciente);
+		            pstmt.setString(2, fecha);
+		            pstmt.executeUpdate();
+		        } catch (SQLException e) {
+		            System.out.println(e.getMessage());
+		        }
+		    }
+		    
+		    public void deletePaciente(String DNI_paciente) {
+		        String sql = "DELETE FROM pacientes WHERE DNI_paciente = ?";
+
+		        try (Connection connection = this.conectar();
+		             PreparedStatement pstmt = connection.prepareStatement(sql)) {
+		            pstmt.setString(1, DNI_paciente);
+		            pstmt.executeUpdate();
+		        } catch (SQLException e) {
+		            System.out.println(e.getMessage());
+		        }
+		    }
+		    public void deleteEspecialidad(String Nombre_especialidad) {
+		        String sql = "DELETE FROM especialidades WHERE Nombre_especialidad = ?";
+
+		        try (Connection connection = this.conectar();
+		             PreparedStatement pstmt = connection.prepareStatement(sql)) {
+		            pstmt.setString(1, Nombre_especialidad);
+		            pstmt.executeUpdate();
+		        } catch (SQLException e) {
+		            System.out.println(e.getMessage());
+		        }
+		    }
+		    public void deleteSolicitud(String ID_solicitud) {
+		        String sql = "DELETE FROM solicitud WHERE ID_solicitud = ?";
+
+		        try (Connection connection = this.conectar();
+		             PreparedStatement pstmt = connection.prepareStatement(sql)) {
+		            pstmt.setString(1, ID_solicitud);
+		            pstmt.executeUpdate();
+		        } catch (SQLException e) {
+		            System.out.println(e.getMessage());
+		        }
+		    }
+		    
+		    public void deletePedido(String ID_pedido) {
+		        String sql = "DELETE FROM pedidos WHERE ID_pedido = ?";
+
+		        try (Connection connection = this.conectar();
+		             PreparedStatement pstmt = connection.prepareStatement(sql)) {
+		            pstmt.setString(1, ID_pedido);
+		            pstmt.executeUpdate();
+		        } catch (SQLException e) {
+		            System.out.println(e.getMessage());
+		        }
+		    }
+		    public void deleteDoctor(String DNI_doctor) {
+		        String sql = "DELETE FROM doctores WHERE DNI_doctor = ?";
+
+		        try (Connection connection = this.conectar();
+		             PreparedStatement pstmt = connection.prepareStatement(sql)) {
+		            pstmt.setString(1, DNI_doctor);
+		            pstmt.executeUpdate();
+		        } catch (SQLException e) {
+		            System.out.println(e.getMessage());
+		        }
+		    }
+		    public void deleteProveedor(String Proveedor) {
+		        String sql = "DELETE FROM proveedores WHERE Proveedor = ?";
+
+		        try (Connection connection = this.conectar();
+		             PreparedStatement pstmt = connection.prepareStatement(sql)) {
+		            pstmt.setString(1, Proveedor);
+		            pstmt.executeUpdate();
+		        } catch (SQLException e) {
+		            System.out.println(e.getMessage());
+		        }
+		    }
+		    
+		    public void deletePago(String DNI, String fecha) {
+		        String sql = "DELETE FROM historial_pago WHERE DNI = ? AND Fecha = ?";
+
+		        try (Connection connection = this.conectar();
+		             PreparedStatement pstmt = connection.prepareStatement(sql)) {
+		            pstmt.setString(1, DNI);
+		            pstmt.setString(1, fecha);
+		            pstmt.executeUpdate();
+		        } catch (SQLException e) {
+		            System.out.println(e.getMessage());
+		        }
+		    }
+		    public void deleteFactura(String ID_factura) {
+		        String sql = "DELETE FROM facturacion WHERE ID_factura = ?";
+
+		        try (Connection connection = this.conectar();
+		             PreparedStatement pstmt = connection.prepareStatement(sql)) {
+		            pstmt.setString(1, ID_factura);
+		            pstmt.executeUpdate();
+		        } catch (SQLException e) {
+		            System.out.println(e.getMessage());
+		        }
+		    }
+		    
+		    
+		    //Actualizar
+		    public void actualizarCita(String DNI_paciente, String nuevoDNI_doctor, String nuevaFecha, String nuevaEspecialidad) {
+		        String sql = "UPDATE citas SET Fecha = ?, DNI_doctor = ?, Especialidad = ? WHERE DNI_paciente = ?";
+
+		        try (Connection connection = this.conectar();
+		             PreparedStatement pstmt = connection.prepareStatement(sql)) {
+		            pstmt.setString(1, nuevaFecha);
+		            pstmt.setString(2, nuevoDNI_doctor);
+		            pstmt.setString(3, nuevaEspecialidad);
+		            pstmt.setString(4, DNI_paciente);
+		            pstmt.executeUpdate();
+		        } catch (SQLException e) {
+		            System.out.println(e.getMessage());
+		        }
+		    }
+		    
+		    public void actualizarUsuario(String DNI_usuario, String rol, String contraseña) {
+		        String sql = "UPDATE usuario SET Contraseña = ?, Rol = ? WHERE DNI_usuario = ?";
+
+		        try (Connection connection = this.conectar();
+		             PreparedStatement pstmt = connection.prepareStatement(sql)) {
+		            pstmt.setString(1, DNI_usuario);
+		            pstmt.setString(2, rol);
+		            pstmt.setString(3, contraseña);
+		            pstmt.executeUpdate();
+		        } catch (SQLException e) {
+		            System.out.println(e.getMessage());
+		        }
+		    }
+		    
 }
 
 
