@@ -640,10 +640,11 @@ public class Jd_actualizarDatos extends JDialog {
 				else if(cb_tablas.getSelectedItem().toString().equals("especialidades")) {
 					int selectedRow = table10.getSelectedRow();
 				    if (selectedRow != -1) {
-				        String Nombre_especialidades = table10.getValueAt(selectedRow, 0).toString();
+				        String Nombre_especialidades = table10.getValueAt(selectedRow, 1).toString();
+				        String ID_especialidades = table10.getValueAt(selectedRow, 0).toString();
 
 				        Consultas consulta = new Consultas();
-				        consulta.actualizar_especialidades(Nombre_especialidades);
+				        consulta.actualizar_especialidades(Nombre_especialidades, ID_especialidades);
 				    }
 					}
 				else if(cb_tablas.getSelectedItem().toString().equals("solicitud")) {

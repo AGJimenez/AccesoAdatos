@@ -942,12 +942,14 @@ public class Consultas {
 		        }
 		    }
 		    
-		    public void actualizar_especialidades(String  Nombre_especialidad) {
-		        String sql = "UPDATE especialidades SET Nombre_especialidad = ? WHERE Nombre_especialidad = ?";
+		    public void actualizar_especialidades(String  Nombre_especialidad, String ID_especialidad) {
+		        String sql = "UPDATE especialidades SET Nombre_especialidad = ? WHERE ID_especialidad = ?";
 
 		        try (Connection connection = this.conectar();
 		             PreparedStatement pstmt = connection.prepareStatement(sql)) {
 		            pstmt.setString(1, Nombre_especialidad);
+		            pstmt.setString(2, ID_especialidad);
+
 		            pstmt.executeUpdate();
 		        } catch (SQLException e) {
 		            System.out.println(e.getMessage());
@@ -977,6 +979,82 @@ public class Consultas {
 		        }
 		    }
 		    
-}
+		    public String mostrarConsulta() {
+		    	/*En este caso, estaríamos seleccionando todos los datos de las tablas pacientes y citas donde el DNI_paciente es igual en ambas tablas.*/
+		        StringBuilder resultStringBuilder = new StringBuilder();
+		        try {
+		            // Establecer la conexión
+		            conect = this.conectar();
 
+		            // Crear la consulta
+		            String sqlQuery = "SELECT * " +
+		                    "FROM pacientes " +
+		                    "JOIN citas " +
+		                    "ON pacientes.DNI_paciente = citas.DNI_paciente";
+
+		            // Crear la declaración
+		            statement = conect.createStatement();
+
+		            // Ejecutar la consulta
+		            resultado = statement.executeQuery(sqlQuery);
+
+		            // Iterar a través de los resultados
+		            while (resultado.next()) {
+		                // Concatenar los resultados al StringBuilder
+		                resultStringBuilder.append("DNI: ").append(resultado.getString("DNI_paciente")).append("\n");
+		                resultStringBuilder.append("Nombre: ").append(resultado.getString("Nombre")).append("\n");
+		                resultStringBuilder.append("Apellidos: ").append(resultado.getString("Apellidos")).append("\n");
+		                resultStringBuilder.append("Fecha: ").append(resultado.getString("Fecha")).append("\n");
+		                resultStringBuilder.append("Especialidad: ").append(resultado.getString("Especialidad")).append("\n\n");
+		            }
+
+		            // Cerrar la conexión
+		        } catch (SQLException e) {
+		            e.printStackTrace();
+		        } finally {
+		            try {
+		                if (resultado != null) {
+		                    resultado.close();
+		                }
+		                if (statement != null) {
+		                    statement.close();
+		                }
+		                if (conect != null) {
+		                    conect.close();
+		                }
+		            } catch (SQLException e) {
+		                e.printStackTrace();
+		            }
+		        }
+		        return resultStringBuilder.toString();
+		    }
+		    
+		    public double obtenerSueldoMedio() {
+		        double sueldoMedio = 0;
+		        try {
+		            // Establecer la conexión
+		            conect = this.conectar();
+
+		            // Crear la consulta
+		            String sqlQuery = "SELECT AVG(CAST(Salario AS DECIMAL(10,2))) AS SueldoMedio FROM doctores";
+
+		            // Crear la declaración
+		            statement = conect.createStatement();
+
+		            // Ejecutar la consulta
+		            resultado = statement.executeQuery(sqlQuery);
+
+		            // Obtener el sueldo medio
+		            if (resultado.next()) {
+		                sueldoMedio = resultado.getDouble("SueldoMedio");
+		            }
+
+		            // Cerrar la conexión
+		        } catch (SQLException e) {
+		            e.printStackTrace();
+		        } 
+		        
+		        return sueldoMedio;
+		    }
+}
 

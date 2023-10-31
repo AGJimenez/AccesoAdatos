@@ -165,6 +165,16 @@ public class Interfaz extends JFrame {
 		panel_1.add(btnNewButton_7);
 		
 		JButton btnNewButton_8 = new JButton("Sueldo medio");
+		btnNewButton_8.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				Consultas consulta = new Consultas();
+				consulta.conectar();
+				double resultado = consulta.obtenerSueldoMedio();
+				JOptionPane.showMessageDialog(null, "Sueldo medio de los doctores:\n"+resultado);
+				
+			}
+		});
 		btnNewButton_8.setBounds(1104, 11, 112, 23);
 		panel_1.add(btnNewButton_8);
 		
@@ -184,6 +194,13 @@ public class Interfaz extends JFrame {
 		panel_1.add(btnNewButton_9);
 		
 		JButton btn_tratamiento = new JButton("Mostrar tratamiento");
+		btn_tratamiento.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Consultas consulta = new Consultas();
+				String resultado = consulta.mostrarConsulta();
+				JOptionPane.showMessageDialog(null, "Coincidencias:\n"+resultado);
+			}
+		});
 		btn_tratamiento.setBounds(760, 11, 129, 23);
 		panel_1.add(btn_tratamiento);
 	}
