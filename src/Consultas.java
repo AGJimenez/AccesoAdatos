@@ -787,14 +787,14 @@ public class Consultas {
 		    
 		    //Actualizar
 		    public void actualizarCita(String DNI_paciente, String nuevoDNI_doctor, String nuevaFecha, String nuevaEspecialidad) {
-		        String sql = "UPDATE citas SET DNI_doctor = ?, Fecha = ?, Especialidad = ? WHERE DNI_paciente = ?";
+		        String sql = "UPDATE citas SET Fecha = ?, DNI_doctor = ?, Especialidad = ? WHERE DNI_paciente = ?";
 
 		        try (Connection connection = this.conectar();
 		             PreparedStatement pstmt = connection.prepareStatement(sql)) {
-		        	pstmt.setString(1, DNI_paciente);
+		        	pstmt.setString(1, nuevaFecha);
 		        	pstmt.setString(2, nuevoDNI_doctor);
-		            pstmt.setString(3, nuevaFecha);
-		            pstmt.setString(4, nuevaEspecialidad);
+		            pstmt.setString(3, nuevaEspecialidad);
+		            pstmt.setString(4, DNI_paciente);
 		           
 		            pstmt.executeUpdate();
 		        } catch (SQLException e) {
@@ -807,9 +807,9 @@ public class Consultas {
 
 		        try (Connection connection = this.conectar();
 		             PreparedStatement pstmt = connection.prepareStatement(sql)) {
-		            pstmt.setString(1, DNI_usuario);
+		            pstmt.setString(1, contraseña);
 		            pstmt.setString(2, rol);
-		            pstmt.setString(3, contraseña);
+		            pstmt.setString(3, DNI_usuario);
 		            pstmt.executeUpdate();
 		        } catch (SQLException e) {
 		            System.out.println(e.getMessage());
@@ -821,9 +821,9 @@ public class Consultas {
 
 		        try (Connection connection = this.conectar();
 		             PreparedStatement pstmt = connection.prepareStatement(sql)) {
-		            pstmt.setString(1, DNI_paciente);
-		            pstmt.setString(2, Doctor);
-		            pstmt.setString(3, Apagar);
+		            pstmt.setString(1, Doctor);
+		            pstmt.setString(2, Apagar);
+		            pstmt.setString(3, DNI_paciente);
 		            pstmt.executeUpdate();
 		        } catch (SQLException e) {
 		            System.out.println(e.getMessage());
@@ -835,8 +835,8 @@ public class Consultas {
 
 		        try (Connection connection = this.conectar();
 		             PreparedStatement pstmt = connection.prepareStatement(sql)) {
-		            pstmt.setString(1, DNI);
-		            pstmt.setString(2, Cantidad);
+		            pstmt.setString(1, Cantidad);
+		            pstmt.setString(2, DNI);
 		            pstmt.executeUpdate();
 		        } catch (SQLException e) {
 		            System.out.println(e.getMessage());
@@ -848,8 +848,8 @@ public class Consultas {
 
 		        try (Connection connection = this.conectar();
 		             PreparedStatement pstmt = connection.prepareStatement(sql)) {
-		            pstmt.setString(1, ID_producto);
-		            pstmt.setString(2, Proveedor);
+		            pstmt.setString(1, Proveedor);
+		            pstmt.setString(2, ID_producto);
 		            pstmt.executeUpdate();
 		        } catch (SQLException e) {
 		            System.out.println(e.getMessage());
@@ -861,10 +861,10 @@ public class Consultas {
 
 		        try (Connection connection = this.conectar();
 		             PreparedStatement pstmt = connection.prepareStatement(sql)) {
-		            pstmt.setString(1, ID_pedido);
-		            pstmt.setString(2, Producto);
-		            pstmt.setString(3, Cantidad);
-		            pstmt.setString(4, Precio);
+		            pstmt.setString(1, Producto);
+		            pstmt.setString(2, Cantidad);
+		            pstmt.setString(3, Precio);
+		            pstmt.setString(4, ID_pedido);
 		            pstmt.executeUpdate();
 		        } catch (SQLException e) {
 		            System.out.println(e.getMessage());
@@ -877,17 +877,17 @@ public class Consultas {
 
 		        try (Connection connection = this.conectar();
 		             PreparedStatement pstmt = connection.prepareStatement(sql)) {
-		            pstmt.setString(1, DNI_paciente);
-		            pstmt.setString(2, Nombre);
-		            pstmt.setString(3, Apellidos);
-		            pstmt.setString(4, Nacimiento);
-		            pstmt.setString(5, Genero);
-		            pstmt.setString(6, Estado);
-		            pstmt.setString(7, Telefono);
-		            pstmt.setString(8, Correo);
-		            pstmt.setString(9, Direccion);
-		            pstmt.setString(10, Seguro);
-		            pstmt.setString(11, Observacion);
+		            pstmt.setString(1, Nombre);
+		            pstmt.setString(2, Apellidos);
+		            pstmt.setString(3, Nacimiento);
+		            pstmt.setString(4, Genero);
+		            pstmt.setString(5, Estado);
+		            pstmt.setString(6, Telefono);
+		            pstmt.setString(7, Correo);
+		            pstmt.setString(8, Direccion);
+		            pstmt.setString(9, Seguro);
+		            pstmt.setString(10, Observacion);
+		            pstmt.setString(11, DNI_paciente);
 		            pstmt.executeUpdate();
 		        } catch (SQLException e) {
 		            System.out.println(e.getMessage());
@@ -899,8 +899,8 @@ public class Consultas {
 
 		        try (Connection connection = this.conectar();
 		             PreparedStatement pstmt = connection.prepareStatement(sql)) {
-		            pstmt.setString(1, ID_producto);
-		            pstmt.setString(2, Cantidad);
+		            pstmt.setString(1, Cantidad);
+		            pstmt.setString(2, ID_producto);
 		            pstmt.executeUpdate();
 		        } catch (SQLException e) {
 		            System.out.println(e.getMessage());
@@ -912,10 +912,10 @@ public class Consultas {
 
 		        try (Connection connection = this.conectar();
 		             PreparedStatement pstmt = connection.prepareStatement(sql)) {
-		            pstmt.setString(1, DNI);
-		            pstmt.setString(2, Cantidad);
-		            pstmt.setString(3, Fecha);
-		            pstmt.setString(4, Tipo);
+		            pstmt.setString(1, Cantidad);
+		            pstmt.setString(2, Fecha);
+		            pstmt.setString(3, Tipo);
+		            pstmt.setString(4, DNI);
 		            pstmt.executeUpdate();
 		        } catch (SQLException e) {
 		            System.out.println(e.getMessage());
@@ -928,14 +928,14 @@ public class Consultas {
 
 		        try (Connection connection = this.conectar();
 		             PreparedStatement pstmt = connection.prepareStatement(sql)) {
-		            pstmt.setString(1, DNI);
-		            pstmt.setString(2, Nombre);
-		            pstmt.setString(3, Apellidos);
-		            pstmt.setString(4, Tratamiento);
-		            pstmt.setString(5, Telefono);
-		            pstmt.setString(6, Fecha);
-		            pstmt.setString(7, Pagado);
-		            pstmt.setString(8, Porpagar);
+		            pstmt.setString(1, Nombre);
+		            pstmt.setString(2, Apellidos);
+		            pstmt.setString(3, Tratamiento);
+		            pstmt.setString(4, Telefono);
+		            pstmt.setString(5, Fecha);
+		            pstmt.setString(6, Pagado);
+		            pstmt.setString(7, Porpagar);
+		            pstmt.setString(8, DNI);
 		            pstmt.executeUpdate();
 		        } catch (SQLException e) {
 		            System.out.println(e.getMessage());
@@ -943,7 +943,7 @@ public class Consultas {
 		    }
 		    
 		    public void actualizar_especialidades(String  Nombre_especialidad) {
-		        String sql = "UPDATE especialidades SET Nombre_especialidad= ? WHERE Nombre_especialidad = ?";
+		        String sql = "UPDATE especialidades SET Nombre_especialidad = ? WHERE Nombre_especialidad = ?";
 
 		        try (Connection connection = this.conectar();
 		             PreparedStatement pstmt = connection.prepareStatement(sql)) {
@@ -960,17 +960,17 @@ public class Consultas {
 
 		        try (Connection connection = this.conectar();
 		             PreparedStatement pstmt = connection.prepareStatement(sql)) {
-		            pstmt.setString(1, DNI_doctor);
-		            pstmt.setString(2, Nombre);
-		            pstmt.setString(3, Apellidos);
-		            pstmt.setString(4, Nacimiento);
-		            pstmt.setString(5, Genero);
-		            pstmt.setString(6, Estado);
-		            pstmt.setString(7, Telefono);
-		            pstmt.setString(8, Correo);
-		            pstmt.setString(9, Direccion);
-		            pstmt.setString(10, Especialidad);
-		            pstmt.setString(11, Salario);
+		            pstmt.setString(1, Nombre);
+		            pstmt.setString(2, Apellidos);
+		            pstmt.setString(3, Nacimiento);
+		            pstmt.setString(4, Genero);
+		            pstmt.setString(5, Estado);
+		            pstmt.setString(6, Telefono);
+		            pstmt.setString(7, Correo);
+		            pstmt.setString(8, Direccion);
+		            pstmt.setString(9, Especialidad);
+		            pstmt.setString(10, Salario);
+		            pstmt.setString(11, DNI_doctor);
 		            pstmt.executeUpdate();
 		        } catch (SQLException e) {
 		            System.out.println(e.getMessage());
