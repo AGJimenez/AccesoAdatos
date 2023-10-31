@@ -57,6 +57,7 @@ public class Jd_insertarDatos extends JDialog {
 		panelContenedor.setBounds(10, 44, 764, 256);
 		getContentPane().add(panelContenedor);
 		panelContenedor.setLayout(null);
+		setLocationRelativeTo(this);
 		
 		JLabel lb1 = new JLabel("DNI_usuario");
 		lb1.setFont(new Font("Arial", Font.PLAIN, 14));
@@ -194,7 +195,7 @@ public class Jd_insertarDatos extends JDialog {
 				 String tablaSeleccionada = (String) cb_tablas.getSelectedItem();
 				
 				 
-				// Lógica para generar dinámicamente los campos en función de la tabla seleccionada
+				// Lógica para generar dinámicamente los campos en función de la tabla seleccionada. Los métodos mostrarX() ocultan los elementos o los hacen visibles en función de la necesidad.
 				 if (tablaSeleccionada.equals("usuario")) {
 					 
 					 mostrarUsuario(lb1, lb2, lb3, lb4, lb5, lb6, lb7, lb8, lb9, lb10, lb11);
@@ -682,7 +683,7 @@ public class Jd_insertarDatos extends JDialog {
 				String[] valores;
 		        String tablaSeleccionada = (String) cb_tablas.getSelectedItem();
 
-		        // Obtén los valores de los campos de texto según la tabla seleccionada
+		        // Obtiene los valores de los campos de texto según la tabla seleccionada
 		        if(tablaSeleccionada.equalsIgnoreCase("usuario")) {
 		        	valores = new String[]{
 		            txt1.getText().toString(),
@@ -838,6 +839,6 @@ public class Jd_insertarDatos extends JDialog {
     }
 
 	 public void setCb_tablasItems(String items) {
-	        cb_tablas.addItem(items); // Usa addItem en lugar de removeAllItems y luego addItem
+	        cb_tablas.addItem(items); 
 	    }
 }

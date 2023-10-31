@@ -58,12 +58,13 @@ public class Jd_actualizarDatos extends JDialog {
 		getContentPane().setBackground(Color.DARK_GRAY);
 		setBounds(100, 100, 800, 400);
 		getContentPane().setLayout(null);
+		setLocationRelativeTo(this);
 		cb_tablas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				 String tablaSeleccionada = (String) cb_tablas.getSelectedItem();
 				 Consultas consultas = new Consultas();
 				 
-				// Lógica para generar dinámicamente los campos en función de la tabla seleccionada
+				// Enseña las tablas en función de lo que se seleccione en el combo box. dura hasta la línea 531
 				 if (tablaSeleccionada.equals("usuario")) {
 					 if(table12!=null) {
 			        		table12.show(false);
@@ -533,6 +534,8 @@ public class Jd_actualizarDatos extends JDialog {
 		
 		cb_tablas.setBounds(669, 328, 105, 22);
 		getContentPane().add(cb_tablas);
+		
+		//Al pulsar el botón actualizar, se ejecutan los Updates instanciados de la clase Consultas. Dependiendo de la celda selccionada y del combo box, se pasarán unos valores u otros.
 		
 		JButton btn_actualizar = new JButton("Actualizar");
 		btn_actualizar.addActionListener(new ActionListener() {

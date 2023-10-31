@@ -58,12 +58,13 @@ public class Jd_borrar_datos extends JDialog {
 		getContentPane().setBackground(Color.DARK_GRAY);
 		setBounds(100, 100, 800, 400);
 		getContentPane().setLayout(null);
+		setLocationRelativeTo(this);
 		cb_tablas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				 String tablaSeleccionada = (String) cb_tablas.getSelectedItem();
 				 Consultas consultas = new Consultas();
 				 
-				// Lógica para generar dinámicamente los campos en función de la tabla seleccionada
+				// Muestra u oculta hasta la linea 531.
 				 if (tablaSeleccionada.equals("usuario")) {
 					 if(table12!=null) {
 			        		table12.show(false);
@@ -534,6 +535,7 @@ public class Jd_borrar_datos extends JDialog {
 		cb_tablas.setBounds(669, 328, 105, 22);
 		getContentPane().add(cb_tablas);
 		
+		//Borra los valores introducidos por el diálogo con el usuario, pasando eso a nuestros "Deletes" instanciados desde la clase Consultas
 		JButton btn_delete = new JButton("Borrar");
 		btn_delete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

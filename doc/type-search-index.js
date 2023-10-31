@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"<Unnamed>","l":"Conexion"},{"p":"<Unnamed>","l":"Consultas"},{"p":"<Unnamed>","l":"Interfaz"},{"p":"<Unnamed>","l":"Jd_actualizarDatos"},{"p":"<Unnamed>","l":"Jd_borrar_datos"},{"p":"<Unnamed>","l":"Jd_insertarDatos"},{"p":"<Unnamed>","l":"Jd_verDatos"}];updateSearchResults();
