@@ -125,15 +125,33 @@ public class Interfaz extends JFrame {
 		panel_1.add(btnNewButton_3);
 		
 		JButton btnNewButton_4 = new JButton("Total de usuarios");
+		btnNewButton_4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				Consultas consulta = new Consultas();
+				consulta.conectar();
+				
+                String resultado = consulta.numeroUsuarios();
+              JOptionPane.showMessageDialog(null, "El número total de usuarios es:\n " + resultado);
+
+				
+			}
+		});
 		btnNewButton_4.setBounds(600, 11, 120, 23);
 		panel_1.add(btnNewButton_4);
 		
-		JButton btnNewButton_5 = new JButton("Total género");
-		btnNewButton_5.setBounds(764, 11, 120, 23);
-		panel_1.add(btnNewButton_5);
-		
-		JButton btnNewButton_6 = new JButton("Buscar usuario");
-		btnNewButton_6.setBounds(938, 11, 103, 23);
+		JButton btnNewButton_6 = new JButton("Buscar paciente");
+		btnNewButton_6.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Consultas consulta = new Consultas();
+				consulta.conectar();
+				String nombre = JOptionPane.showInputDialog("Introduce un nombre o el comienzo de el para buscar coincidencias");
+				String resultado = consulta.buscarPacientePorNombre(nombre);
+				JOptionPane.showMessageDialog(null, "Coincidencias:\n"+resultado);
+				
+			}
+		});
+		btnNewButton_6.setBounds(938, 11, 120, 23);
 		panel_1.add(btnNewButton_6);
 		
 		JButton btnNewButton_7 = new JButton("Conectar");
@@ -166,7 +184,7 @@ public class Interfaz extends JFrame {
 		panel_1.add(btnNewButton_9);
 		
 		JButton btn_tratamiento = new JButton("Mostrar tratamiento");
-		btn_tratamiento.setBounds(764, 64, 129, 23);
+		btn_tratamiento.setBounds(760, 11, 129, 23);
 		panel_1.add(btn_tratamiento);
 	}
 }

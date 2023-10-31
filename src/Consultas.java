@@ -58,6 +58,8 @@ public class Consultas {
 		 
 		
 		 
+
+		 
 		 public void insertarTablasMostrar(Jd_insertarDatos datos) throws SQLException {
 			    // consulta para ver nombre de tablas
 			    statement = conect.createStatement();
@@ -77,6 +79,9 @@ public class Consultas {
 			        }
 			    }
 			}
+		 
+		 
+		 
 		 
 		 public void insertarTablasMostrar_borrar(Jd_borrar_datos datos) throws SQLException {
 			    // consulta para ver nombre de tablas
@@ -730,6 +735,55 @@ public class Consultas {
 		        }
 		    }
 		    
+		    
+		    
+		    public String numeroUsuarios() {
+		        StringBuilder stringBuilder = new StringBuilder();
+		        try {
+		            statement = conect.createStatement();
+
+		            String sql = "SELECT Rol, COUNT(*) AS cantidad FROM usuario GROUP BY Rol";
+		            ResultSet rs = statement.executeQuery(sql);
+
+		            while (rs.next()) {
+		                String rol = rs.getString("rol");
+		                int cantidad = rs.getInt("cantidad");
+		                stringBuilder.append("Rol: ").append(rol).append(", Cantidad: ").append(cantidad).append("\n");
+		            }
+
+		            rs.close();
+		            statement.close();
+		            conect.close();
+		        } catch (Exception e) {
+		            e.printStackTrace();
+		        }
+		        return stringBuilder.toString();
+		    }
+
+		    public String buscarPacientePorNombre(String nombre) {
+		        String nombreEncontrado = null;
+		        try {
+		            statement = conect.createStatement();
+
+		            String sql = "SELECT * FROM pacientes WHERE Nombre LIKE '%" + nombre + "%'";
+		            ResultSet rs = statement.executeQuery(sql);
+
+		            while (rs.next()) {
+		                // Aquí puedes procesar el resultado de la búsqueda
+		                nombreEncontrado = rs.getString("Nombre");
+		                // Haz algo con el nombre encontrado, como imprimirlo en la consola
+		                return nombreEncontrado;
+		            }
+
+		            rs.close();
+		            statement.close();
+		            conect.close();
+		        } catch (Exception e) {
+		            e.printStackTrace();
+		        }
+		        return nombreEncontrado;
+		    }
+
 		    
 		    //Actualizar
 		    public void actualizarCita(String DNI_paciente, String nuevoDNI_doctor, String nuevaFecha, String nuevaEspecialidad) {
