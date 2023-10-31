@@ -538,19 +538,45 @@ public class Jd_actualizarDatos extends JDialog {
 		btn_actualizar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(cb_tablas.getSelectedItem().toString().equals("usuario")) {
-				String borrar = JOptionPane.showInputDialog("Introduce el DNI del usuario que quieres borrar");
-				Consultas consulta = new Consultas();		
-				consulta.deleteUsuario(borrar);
+					int selectedRow = table1.getSelectedRow();
+				    if (selectedRow != -1) {
+				        String DNI_usuario = table1.getValueAt(selectedRow, 0).toString();
+				        String nuevo_rol = table1.getValueAt(selectedRow, 1).toString(); // 
+				        String nuevo_contraseña = table1.getValueAt(selectedRow, 2).toString();
+
+				        Consultas consulta = new Consultas();
+				        consulta.actualizarUsuario(DNI_usuario, nuevo_rol, nuevo_contraseña);
+				    }
 				}
 				else if(cb_tablas.getSelectedItem().toString().equals("doctores")) {
-					String borrar = JOptionPane.showInputDialog("Introduce el DNI del doctor que quieres borrar");
-					Consultas consulta = new Consultas();		
-					consulta.deleteDoctor(borrar);
+					int selectedRow = table11.getSelectedRow();
+				    if (selectedRow != -1) {
+				        String DNI_doctor = table11.getValueAt(selectedRow, 0).toString();
+				        String nuevo_nombre = table11.getValueAt(selectedRow, 1).toString(); // 
+				        String nuevo_apellidos = table11.getValueAt(selectedRow, 2).toString();
+				        String nuevo_nacimiento = table11.getValueAt(selectedRow, 3).toString();
+				        String nuevo_genero = table11.getValueAt(selectedRow, 4).toString();
+				        String nuevo_estado = table11.getValueAt(selectedRow, 5).toString();
+				        String nuevo_telefono = table11.getValueAt(selectedRow, 6).toString();
+				        String nuevo_correo = table11.getValueAt(selectedRow, 7).toString();
+				        String nuevo_direccion = table11.getValueAt(selectedRow, 8).toString();
+				        String nuevo_especialidad = table11.getValueAt(selectedRow, 9).toString();
+				        String nuevo_salario = table11.getValueAt(selectedRow, 10).toString();
+
+				        Consultas consulta = new Consultas();
+				        consulta.actualizar_doctores(DNI_doctor, nuevo_nombre, nuevo_apellidos, nuevo_nacimiento, nuevo_genero, nuevo_estado, nuevo_telefono, nuevo_correo, nuevo_direccion, nuevo_especialidad, nuevo_salario);
+				    }
 					}
 				else if(cb_tablas.getSelectedItem().toString().equals("tratamientos")) {
-					String borrar = JOptionPane.showInputDialog("Introduce el id");
-					Consultas consulta = new Consultas();		
-					consulta.deleteTratamiento(borrar);
+					int selectedRow = table2.getSelectedRow();
+				    if (selectedRow != -1) {
+				        String DNI_paciente = table2.getValueAt(selectedRow, 0).toString();
+				        String nuevo_doctor = table2.getValueAt(selectedRow, 1).toString(); // 
+				        String nuevo_a_pagar = table2.getValueAt(selectedRow, 2).toString();
+
+				        Consultas consulta = new Consultas();
+				        consulta.actualizar_tratamientos(DNI_paciente, nuevo_doctor, nuevo_a_pagar);
+				    }
 					}
 				else if (cb_tablas.getSelectedItem().toString().equals("citas")) {
 				    int selectedRow = table12.getSelectedRow();
@@ -565,40 +591,92 @@ public class Jd_actualizarDatos extends JDialog {
 				    }
 				}
 				else if(cb_tablas.getSelectedItem().toString().equals("facturacion")) {
-					String borrar = JOptionPane.showInputDialog("Introduce el ID de la factura a borrar");
-					Consultas consulta = new Consultas();		
-					consulta.deleteFactura(borrar);
+					int selectedRow = table9.getSelectedRow();
+				    if (selectedRow != -1) {
+				        String DNI = table9.getValueAt(selectedRow, 0).toString();
+				        String nuevo_nombre = table9.getValueAt(selectedRow, 1).toString(); // 
+				        String nuevo_apellidos = table9.getValueAt(selectedRow, 2).toString();
+				        String nuevo_tratamiento = table9.getValueAt(selectedRow, 3).toString();
+				        String nuevo_telefono = table9.getValueAt(selectedRow, 4).toString();
+				        String nuevo_fecha = table9.getValueAt(selectedRow, 5).toString();
+				        String nuevo_pagado = table9.getValueAt(selectedRow, 6).toString();
+				        String nuevo_por_pagar = table9.getValueAt(selectedRow, 7).toString();
+
+				        Consultas consulta = new Consultas();
+				        consulta.actualizar_facturacion(DNI, nuevo_nombre, nuevo_apellidos, nuevo_tratamiento, nuevo_telefono, nuevo_fecha, nuevo_pagado, nuevo_por_pagar);
+				    }
 					}
 				else if(cb_tablas.getSelectedItem().toString().equals("historial_pago")) {
-					String borrar = JOptionPane.showInputDialog("Introduce el DNI del paciente");
-					String borrar2 = JOptionPane.showInputDialog("Introduce la fecha en la que pagó");
-					Consultas consulta = new Consultas();		
-					consulta.deletePago(borrar,borrar2);
+					int selectedRow = table8.getSelectedRow();
+				    if (selectedRow != -1) {
+				        String DNI = table8.getValueAt(selectedRow, 0).toString();
+				        String nuevo_cantidad = table8.getValueAt(selectedRow, 1).toString(); // 
+				        String nuevo_fecha = table8.getValueAt(selectedRow, 2).toString();
+				        String nuevo_tipo = table8.getValueAt(selectedRow, 3).toString();
+
+				        Consultas consulta = new Consultas();
+				        consulta.actualizar_historial_pago(DNI, nuevo_cantidad, nuevo_fecha, nuevo_tipo);
+				    }
 					}
 				else if(cb_tablas.getSelectedItem().toString().equals("pacientes")) {
-					String borrar = JOptionPane.showInputDialog("Introduce el DNI del paciente");
-					Consultas consulta = new Consultas();		
-					consulta.deletePaciente(borrar);
+					int selectedRow = table6.getSelectedRow();
+				    if (selectedRow != -1) {
+				        String DNI_paciente = table6.getValueAt(selectedRow, 0).toString();
+				        String nuevo_nombre = table6.getValueAt(selectedRow, 1).toString(); // 
+				        String nuevo_apellidos = table6.getValueAt(selectedRow, 2).toString();
+				        String nuevo_nacimiento = table6.getValueAt(selectedRow, 3).toString();
+				        String nuevo_genero = table6.getValueAt(selectedRow, 4).toString();
+				        String nuevo_estado = table6.getValueAt(selectedRow, 5).toString();
+				        String nuevo_telefono = table6.getValueAt(selectedRow, 6).toString();
+				        String nuevo_correo = table6.getValueAt(selectedRow, 7).toString();
+				        String nuevo_direccion = table6.getValueAt(selectedRow, 8).toString();
+				        String nuevo_seguro = table6.getValueAt(selectedRow, 9).toString();
+				        String nuevo_observacion = table6.getValueAt(selectedRow, 10).toString();
+
+				        Consultas consulta = new Consultas();
+				        consulta.actualizar_pacientes(DNI_paciente, nuevo_nombre, nuevo_apellidos, nuevo_nacimiento, nuevo_genero, nuevo_estado, nuevo_telefono, nuevo_correo, nuevo_direccion, nuevo_seguro, nuevo_observacion);
+				    }
 					}
 				else if(cb_tablas.getSelectedItem().toString().equals("especialidades")) {
-					String borrar = JOptionPane.showInputDialog("Nombre de la especialidad a borrar");
-					Consultas consulta = new Consultas();		
-					consulta.deleteEspecialidad(borrar);
+					int selectedRow = table10.getSelectedRow();
+				    if (selectedRow != -1) {
+				        String Nombre_especialidades = table10.getValueAt(selectedRow, 0).toString();
+
+				        Consultas consulta = new Consultas();
+				        consulta.actualizar_especialidades(Nombre_especialidades);
+				    }
 					}
 				else if(cb_tablas.getSelectedItem().toString().equals("solicitud")) {
-					String borrar = JOptionPane.showInputDialog("Introduce el ID de la solicitud");
-					Consultas consulta = new Consultas();		
-					consulta.deleteSolicitud(borrar);
+					int selectedRow = table3.getSelectedRow();
+				    if (selectedRow != -1) {
+				        String DNI = table3.getValueAt(selectedRow, 0).toString();
+				        String Cantidad = table3.getValueAt(selectedRow, 1).toString();
+
+				        Consultas consulta = new Consultas();
+				        consulta.actualizar_solicitud(DNI, Cantidad);
+				    }
 					}
 				else if(cb_tablas.getSelectedItem().toString().equals("pedidos")) {
-					String borrar = JOptionPane.showInputDialog("Introduce el ID del pedido");
-					Consultas consulta = new Consultas();		
-					consulta.deletePedido(borrar);
+					int selectedRow = table5.getSelectedRow();
+				    if (selectedRow != -1) {
+				        String ID_pedido = table5.getValueAt(selectedRow, 0).toString();
+				        String Producto = table5.getValueAt(selectedRow, 1).toString();
+				        String Cantidad = table5.getValueAt(selectedRow, 2).toString();
+				        String Precio = table5.getValueAt(selectedRow, 3).toString();
+
+				        Consultas consulta = new Consultas();
+				        consulta.actualizar_pedidos(ID_pedido, Producto, Cantidad, Precio);
+				    }
 					}
 				else if(cb_tablas.getSelectedItem().toString().equals("proveedores")) {
-					String borrar = JOptionPane.showInputDialog("Introduce el nombre del proveedor");
-					Consultas consulta = new Consultas();		
-					consulta.deleteProveedor(borrar);
+					int selectedRow = table4.getSelectedRow();
+				    if (selectedRow != -1) {
+				        String ID_producto = table4.getValueAt(selectedRow, 0).toString();
+				        String Proveedor = table4.getValueAt(selectedRow, 1).toString();
+
+				        Consultas consulta = new Consultas();
+				        consulta.actualizar_proveedor(ID_producto, Proveedor);
+				    }
 					}
 			}
 		});
@@ -608,6 +686,8 @@ public class Jd_actualizarDatos extends JDialog {
 		
 
 	}
+	
+	
 	
 	public JComboBox<String> getCb_tablas() {
         return cb_tablas;

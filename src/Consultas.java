@@ -14,7 +14,7 @@ import javax.swing.table.DefaultTableModel;
 
 public class Consultas {
 	 private static final String CONTROLADOR = "com.mysql.jdbc.Driver";
-		private static final String URL = "jdbc:mysql://localhost:3306/dentilax_BBDD";
+		private static final String URL = "jdbc:mysql://localhost:3306/dentilax_BBDD?useSSL=false";
 		String tablaNombre;
 		private static final String USUARIO = "root";
 		private static final String CLAVE = "1234";
@@ -787,14 +787,15 @@ public class Consultas {
 		    
 		    //Actualizar
 		    public void actualizarCita(String DNI_paciente, String nuevoDNI_doctor, String nuevaFecha, String nuevaEspecialidad) {
-		        String sql = "UPDATE citas SET Fecha = ?, DNI_doctor = ?, Especialidad = ? WHERE DNI_paciente = ?";
+		        String sql = "UPDATE citas SET DNI_doctor = ?, Fecha = ?, Especialidad = ? WHERE DNI_paciente = ?";
 
 		        try (Connection connection = this.conectar();
 		             PreparedStatement pstmt = connection.prepareStatement(sql)) {
-		            pstmt.setString(1, nuevaFecha);
-		            pstmt.setString(2, nuevoDNI_doctor);
-		            pstmt.setString(3, nuevaEspecialidad);
-		            pstmt.setString(4, DNI_paciente);
+		        	pstmt.setString(1, DNI_paciente);
+		        	pstmt.setString(2, nuevoDNI_doctor);
+		            pstmt.setString(3, nuevaFecha);
+		            pstmt.setString(4, nuevaEspecialidad);
+		           
 		            pstmt.executeUpdate();
 		        } catch (SQLException e) {
 		            System.out.println(e.getMessage());
